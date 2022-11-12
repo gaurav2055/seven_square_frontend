@@ -17,9 +17,9 @@ const PropertiesListing = () => {
 
             <div className="img-card">
               <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" alt="propertyImg" />
-              <p className='h6 px-5 pt-3'> 1200 sqft. </p>
-              <p className='property px-5'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Non eius consectetur omnis! </p>
-              <div className="btn btn-dark mx-5 mb-3" onClick={OnClickPropertyHandler}>View Property</div>
+              <p className='h6 px-4 pt-3'> 1200 sqft. </p>
+              <p className='property px-4'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Non eius consectetur omnis! </p>
+              <div className="btn btn-dark mx-4 mb-3" onClick={OnClickPropertyHandler}>View Property</div>
             </div>
 
             <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZSUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="propertyImg" />

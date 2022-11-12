@@ -1,4 +1,9 @@
-.card-container{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 29px;
+/* .carousel-item{
+    width: auto;
+    height: 400px;
+} */
+.carousel-item img{
+    width: auto;
+    height: 31.25rem;
+    object-fit: contain;
 }
