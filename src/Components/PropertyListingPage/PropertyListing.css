@@ -1,0 +1,21 @@
+.masonry{
+    columns: 3 250px;
+    gap: 15px;
+    position: relative;
+}
+.masonry img{
+    border-radius: 12px 12px 0px 0px;
+    width: 100%;
+    margin-bottom: 15px;
+    /* transition:all 0.25s ease; */
+    /* background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%); */
+}
+.img-card{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 12px;
+}
+/* .img-text{
+    position: absolute;
+    top: 18;
+    left: 30;
+} */

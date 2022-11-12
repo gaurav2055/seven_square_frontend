@@ -1,0 +1,12 @@
+.btn1{
+    color: #000;
+    border-color: #000;
+}
+.btn1:hover{
+    color: #fff;
+    background-color: #000;
+}
+.btn1:active{
+    color: #fff;
+    background-color: #000;
+}

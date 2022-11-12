@@ -6,7 +6,7 @@ const Services = () => {
 
   return (
     <>
-    <div className="services-header container text-center">
+    <div className="services-header container text-center" id='services1'>
         <p className="h2">
             Services
         </p>

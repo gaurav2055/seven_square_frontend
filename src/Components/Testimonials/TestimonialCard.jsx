@@ -9,7 +9,7 @@ const TestimonialCard = () => {
     <>
     <div className='mt-5'>
         <div className="testimonial-header text-center">
-            <p className="h4">Testimonials</p>
+            <p className="h2">Testimonials</p>
             <p className="">massa massa massa nisi. Aliquam quis ante ultricies arcu tincidunt bibendum ac sed enim. Sed ultrices et arcu quis sollicitudin. massa massa massa nisi.</p>
         </div>
         <div className="container">
