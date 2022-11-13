@@ -1,37 +1,46 @@
-.masonry{
-    columns: 3 250px;
-    gap: 15px;
-    position: relative;
+.masonry {
+	columns: 3 250px;
+	gap: 15px;
+	position: relative;
 }
-.masonry img{
-    /* border-radius: 12px 12px 0px 0px; */
-    width: 100%;
-    margin-bottom: 15px;
-    /* background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%); */
+.masonry img {
+	/* border-radius: 12px 12px 0px 0px; */
+	width: 100%;
+	margin-bottom: 15px;
+	/* background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%); */
 }
-.img-card{
-    position: relative;
-    color: white;
-    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+.img-card {
+	position: relative;
+	color: white;
+	/* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 12px; */
-    /* background: linear-gradient(to bottom, #000 0%, #000 100%); */
+	/* background: linear-gradient(to bottom, #000 0%, #000 100%); */
 }
-.img-card:hover{
-    /* transform: scale(1.1); */
-    opacity: .8;
-    transition:all 0.25s ease;
-    cursor: pointer;
-    /* object-fit: contain; */
+.img-card:hover {
+	/* transform: scale(1.1); */
+	opacity: 0.8;
+	transition: all 0.25s ease;
+	cursor: pointer;
+	/* object-fit: contain; */
 }
-.overlay{
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 58.12%);
-    /* background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.507168) 25.83%, rgba(0, 0, 0, 0.89) 61.77%); */
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
+.overlay {
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 58.12%);
+	/* background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.507168) 25.83%, rgba(0, 0, 0, 0.89) 61.77%); */
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
 }
 /* .img-text{
     position: absolute;
     top: 18;
     left: 30;
 } */
+
+.modal {
+	display: block;
+}
+
+.close {
+	background-color: transparent;
+	border: none;
+}
