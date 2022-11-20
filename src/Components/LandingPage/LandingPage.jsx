@@ -23,9 +23,9 @@ const LandingPage = () => {
       <Services differentComponentOnMobile = { true } />
     </section>
 
-    {/* <section className='partners'>
+    <section className='partners'>
       <Associates />
-    </section> */}
+    </section>
 
     {/* <div className="testimonials-section">
       <TestimonialCard />

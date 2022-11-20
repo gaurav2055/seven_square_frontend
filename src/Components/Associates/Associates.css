@@ -1,0 +1,14 @@
+.associate-right{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.grid-item {
+    padding: 5px;
+    text-align: center;
+}
+
+@media screen and (max-width:'600px'){
+    .associate-right{
+        margin-top: -120px;
+    }
+}

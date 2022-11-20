@@ -5,72 +5,58 @@ import logo_lodha from '../../assets/logo_lodha.png'
 import logo_godrej from '../../assets/logo_godrej.png' 
 import logo_rustomjee from '../../assets/logo_rustomjee.png' 
 
+import './Associates.css'
+
 const Associates = () => {
   return (
     <>
-        <div className="associate-main" style={{backgroundColor:'#F4F4F4'}}>
+        <div className="associate-main container mt-5 d-sm-flex justify-content-around align-items-center">
 
-          <div className="associate-header text-center py-3 px-2">
-            <p className='h2'>Associated with</p>
-            <p>massa massa massa nisi. Aliquam quis ante ultricies arcu tincidunt bibendum ac sed enim. Sed ultrices et arcu quis sollicitudin.</p>
+          <div className="associate-left w-50">
+            <div style={{
+              backgroundColor:'#c4c4c4', 
+              height:'12.5rem', 
+              width:'12.5rem',
+              position:'relative'
+              }}></div>
+            <div className="heading-1 me-sm-5" style={{
+              position:'relative',
+              top:'-170px',
+              left:'50px' 
+              }}>To make your Dream come true we have associated with</div>
           </div>
 
-          <div className="associations">
+          <div className="associate-right">
 
-            <div className="container text-center">
-              <div className="row">
-                <div className="col-md-3">
-                  <img src={logo_lodha} alt="logo" />
-                </div>
-                <div className="col-md-3">
-                  <img src={logo_hiranandani} alt="logo" />
-                </div>
-                <div className="col-md-3">
-                  <img src={logo_godrej} alt="logo" />
-                </div>
-                <div className="col-md-3">
-                  <img src={logo_rustomjee} alt="logo" />
-                </div>
-              </div>
-            </div>
-
-            <div className="others main text-center my-3">
-              <b className='h2 text-center'>&</b>
-              <div className="others container d-sm-flex mt-3">
-                <div className="row">
-                  <div className="col-sm-2">
-                    <p>DOSTI Friends & Life</p>
-                  </div>
-                  <div className="col-sm-2">
-                    <p>Raheja Universal</p>
-                  </div>
-                  <div className="col-sm-2">
-                    <p>Kalpa-Taru Power Transformation</p>
-                  </div>
-                  <div className="col-sm-2">
-                    <p>Mahindra Lifespaces</p>
-                  </div>
-                  <div className="col-sm-2">
-                    <p>Ajmera</p>
-                  </div>
-                  <div className="col-sm-2">
-                    <p>Chandak Foundation for Tomrrow</p>
-                  </div>
-                  <div className="col-sm-2">
-                    <p>K Raheja Corp Homes</p>
-                  </div>
-                  <div className="col-sm-2">
-                    <p>Nirman Group</p>
-                  </div>
-                  <div className="col-sm-2">
-                    <p>Prestige Group</p>
-                  </div>
-                  <div className="col-sm-2">
-                    <p>Shraddha Lifespaces</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="grid-item border-right" style={{
+              borderRight: '1px solid #c4c4c4'
+            }}><p className='heading-3' style={{color:'#c4c4c4'}}>Rustomjee</p></div>
+            <div className="grid-item border-right" style={{
+              borderRight: '1px solid #c4c4c4'
+            }}><p className='heading-3' style={{color:'#c4c4c4'}}>Hiranandani <br/> Communities</p></div>
+            <div className="grid-item"><p className='heading-3' style={{color:'#c4c4c4'}}>Lorem Ipsum</p></div>  
+            <div className="grid-item" style={{
+              borderRight: '1px solid #c4c4c4',
+              borderTop: '1px solid #c4c4c4'
+            }}><p className='heading-3' style={{color:'#c4c4c4'}}>Lorem Ipsum</p></div>
+            <div className="grid-item" style={{
+              borderRight: '1px solid #c4c4c4',
+              borderTop: '1px solid #c4c4c4'
+            }}><p className='heading-3' style={{color:'#c4c4c4'}}>Godrej <br/> Properties</p></div>
+            <div className="grid-item" style={{
+              borderTop: '1px solid #c4c4c4'
+            }}><p className='heading-3' style={{color:'#c4c4c4'}}>Lorem <br/> Ipsum</p></div>  
+            <div className="grid-item" style={{
+              borderRight: '1px solid #c4c4c4',
+              borderTop: '1px solid #c4c4c4'
+            }}><p className='heading-3' style={{color:'#c4c4c4'}}>Lorem <br/> Ipsum</p></div>
+            <div className="grid-item" style={{
+              borderRight: '1px solid #c4c4c4',
+              borderTop: '1px solid #c4c4c4'
+            }}><p className='heading-3' style={{color:'#c4c4c4'}}>Lorem <br/> Ipsum</p></div>
+            <div className="grid-item" style={{
+              borderTop: '1px solid #c4c4c4'
+            }}><p className='heading-3' style={{color:'#c4c4c4'}}>Lorem <br/> Ipsum</p></div> 
 
           </div>
 
