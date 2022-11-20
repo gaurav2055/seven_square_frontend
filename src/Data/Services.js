@@ -10,9 +10,11 @@ const ServicesData = [
     {
         "s":{
             "icon": "",
-            "title": "Vastu Consultation",
-            "description": "Some quick example text to build on the card title",
-            "styling": "heading-1 body-1 #000"
+            "title": "Services",
+            "description": "Lorem ipsum dolor sit amet, tetur adipiscing elit. Curabiturs.",
+            "headingStyle": "heading-2 #000",
+            "bodyStyle": "#000",
+            "cardBodyStyle": "0px"
         }
     },
     {
@@ -20,7 +22,9 @@ const ServicesData = [
             "icon": service_1,
             "title": "Legal Services",
             "description": "Some quick example text to build on the card title",
-            "styling": "heading-1 body-1 #000"
+            "headingStyle": "heading-3 text-white",
+            "bodyStyle": "text-white",
+            "cardBodyStyle": "100px"
         }
     },
     {
@@ -28,7 +32,9 @@ const ServicesData = [
             "icon": service_2,
             "title": "Pay Rent",
             "description": "Some quick example text to build on the card title",
-            "styling": "heading-1 body-1 #000"
+            "headingStyle": "heading-3 text-white",
+            "bodyStyle": "text-white",
+            "cardBodyStyle": "100px"
         }
     },
     {
@@ -36,7 +42,9 @@ const ServicesData = [
             "icon": service_3,
             "title": "Rent Agreement",
             "description": "Some quick example text to build on the card title",
-            "styling": "heading-1 body-1 #000"
+            "headingStyle": "heading-3 text-white",
+            "bodyStyle": "text-white",
+            "cardBodyStyle": "100px"
         }
     },
     {
@@ -44,7 +52,9 @@ const ServicesData = [
             "icon": service_4,
             "title": "Home Loan",
             "description": "Some quick example text to build on the card title",
-            "styling": "heading-1 body-1 #000"
+            "headingStyle": "heading-3 text-white",
+            "bodyStyle": "text-white",
+            "cardBodyStyle": "100px"
         }
     },
     {
@@ -52,7 +62,9 @@ const ServicesData = [
             "icon": service_5,
             "title": "Home Interior",
             "description": "Some quick example text to build on the card title",
-            "styling": "heading-1 body-1 #000"
+            "headingStyle": "heading-3 text-white",
+            "bodyStyle": "text-white",
+            "cardBodyStyle": "100px"
         }
     },
     {
@@ -60,7 +72,9 @@ const ServicesData = [
             icon: service_6,
             title: "Packers & Movers",
             "description": "Some quick example text to build on the card title",
-            "styling": "heading-1 body-1 #000"
+            "headingStyle": "heading-3 text-white",
+            "bodyStyle": "text-white",
+            "cardBodyStyle": "100px"
         }
     },
     {
@@ -68,7 +82,9 @@ const ServicesData = [
             "icon": service_7,
             "title": "Rental Furniture",
             "description": "Some quick example text to build on the card title",
-            "styling": "heading-1 body-1 #000"
+            "headingStyle": "heading-3 text-white",
+            "bodyStyle": "text-white",
+            "cardBodyStyle": "100px"
         }
     }
 ]

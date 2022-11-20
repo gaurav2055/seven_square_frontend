@@ -104,3 +104,12 @@ body {
     display: none;
   }
 }
+
+.MobileResponsive{
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  .MobileResponsive{
+    display: block;
+  }
+}

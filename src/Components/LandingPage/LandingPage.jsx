@@ -20,7 +20,7 @@ const LandingPage = () => {
     </section>
 
     <section className="ServicesSection my-5">
-      <Services />
+      <Services differentComponentOnMobile = { true } />
     </section>
 
     {/* <section className='partners'>
