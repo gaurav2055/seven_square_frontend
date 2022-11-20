@@ -23,13 +23,13 @@ const LandingPage = () => {
       <Services />
     </section>
 
-    <section className='partners'>
+    {/* <section className='partners'>
       <Associates />
-    </section>
+    </section> */}
 
-    <div className="testimonials-section">
+    {/* <div className="testimonials-section">
       <TestimonialCard />
-    </div>
+    </div> */}
 
     <section className='footer'>
       <Footer />
