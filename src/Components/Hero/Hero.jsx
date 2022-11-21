@@ -51,7 +51,7 @@ const Hero = () => {
           <div className="circle-with-line d-flex justify-content-end align-items-start w-50">
             <div className="circle-with-line d-flex justify-content-center align-items-center w-50">
               <div className="outer-circle"> <div className="inner-circle mx-auto"></div> </div>
-              <hr className='w-50'/>
+              <hr className='w-50' style={{borderTop:'2px solid #fff'}}/>
             </div>
           </div>
           <div className="feature1-content w-75 text-white">
@@ -70,7 +70,7 @@ const Hero = () => {
           </div>
           <div className="circle-with-line d-flex justify-content-start align-items-start w-50">
             <div className="circle-with-line d-flex justify-content-center align-items-center w-50">
-              <hr className='w-50'/>
+              <hr className='w-50'  style={{borderTop:'2px solid #fff'}}/>
               <div className="outer-circle"> <div className="inner-circle mx-auto"></div> </div>
             </div>
           </div>
@@ -79,7 +79,7 @@ const Hero = () => {
           <div className="circle-with-line d-flex justify-content-end align-items-start w-50">
             <div className="circle-with-line d-flex justify-content-center align-items-center w-50">
               <div className="outer-circle"> <div className="inner-circle mx-auto"></div> </div>
-              <hr className='w-50'/>
+              <hr className='w-50' style={{borderTop:'2px solid #fff'}}/>
             </div>
           </div>
           <div className="feature3-content w-75 text-white">
@@ -98,7 +98,7 @@ const Hero = () => {
           </div>
           <div className="circle-with-line d-flex justify-content-start align-items-start w-50">
             <div className="circle-with-line d-flex justify-content-center align-items-center w-50">
-              <hr className='w-50'/>
+              <hr className='w-50' style={{borderTop:'2px solid #fff'}}/>
               <div className="outer-circle"> <div className="inner-circle mx-auto"></div> </div>
             </div>
           </div>

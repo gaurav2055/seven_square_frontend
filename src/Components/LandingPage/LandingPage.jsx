@@ -6,6 +6,7 @@ import Services from '../ServicesComponent/Services'
 import Footer from '../Footer/Footer'
 import Associates from '../Associates/Associates'
 import TestimonialCard from '../Testimonials/TestimonialCard'
+import FeaturedProperties from '../FeaturedProperties/fp_index'
 
 
 const LandingPage = () => {
@@ -26,6 +27,10 @@ const LandingPage = () => {
     <section className='partners'>
       <Associates />
     </section>
+
+    <div className="testimonials-section">
+      <FeaturedProperties />
+    </div>
 
     {/* <div className="testimonials-section">
       <TestimonialCard />

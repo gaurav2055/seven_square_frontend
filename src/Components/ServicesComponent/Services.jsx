@@ -17,7 +17,7 @@ const Services = (props) => {
   return (
     <>
   
-    <div className="react-slicker w-75 mx-auto MobileResponsive">
+    <div className="react-slicker w-75 mx-auto MobileResponsive my-5">
         <Slider {...settings}>
         {ServicesData.map((value, index)=>{
             return(
@@ -30,12 +30,6 @@ const Services = (props) => {
                         <div className={`${value.s.bodyStyle} w-50`}>{value.s.description}</div>
                     </div>
                 </div>
-                // <div className="text-left" style={{backgroundImage:`url(${value.s.icon})`, border: 'none'}}>
-                //     <div style={{paddingTop:`${value.s.cardBodyStyle}`}}>
-                //         <p className={`mb-0 ${value.s.headingStyle}`}>{value.s.title}</p>
-                //         <p className={`body-2 ${value.s.bodyStyle}`}>{value.s.description}</p>
-                //     </div>
-                // </div>
             )
         })}
         </Slider>
