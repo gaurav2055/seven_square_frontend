@@ -32,9 +32,9 @@ const LandingPage = () => {
       <FeaturedProperties />
     </div>
 
-    {/* <div className="testimonials-section">
+    <div className="testimonials-section">
       <TestimonialCard />
-    </div> */}
+    </div>
 
     <section className='footer'>
       <Footer />
