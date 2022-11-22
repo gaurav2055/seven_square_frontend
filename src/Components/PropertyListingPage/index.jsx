@@ -1,6 +1,8 @@
 import React from 'react'
 import Footer from '../Footer/Footer'
-import CommonHeader from '../Header/CommonHeader'
+import LandingPageHeader from '../Header/LandingPageHeader'
+import plp_header_ic from '../../assets/plp_header_ic.png'
+import downArrow_ic from '../../assets/downArrow_ic.png'
 
 import './index.css'
 import PropertiesListing from './PropertiesListing'
@@ -8,33 +10,46 @@ import PropertiesListing from './PropertiesListing'
 const PropertyListingPage = () => {
   return (
     <div>
-      <CommonHeader />
-      <div className="subHeader container mt-3 d-sm-flex justify-content-between align-items-center flex-wrap">
-        <div className="property-typ-btn">
-          <button type="button" className="btn btn1 btn-outline-dark">All</button>
-          <button type="button" className="btn btn1 btn-outline-dark ms-3">Buy</button>
-          <button type="button" className="btn btn1 btn-outline-dark ms-3">Rent Out</button>
-          <button type="button" className="btn btn1 btn-outline-dark ms-sm-3 my-3 my-sm-0">Ongoing Project</button>
+      <LandingPageHeader isdark={true}/>
+      <div className="headings container mt-4">
+        <p className='heading-1'>Buy Your Dream Commercial Property</p>
+        <p className='body-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit <br/> congue sodales. Nulla eget ex odio.</p>
+      </div>
+
+<div className="plp_menu_main container" style={{minWidth:'fit-content'}}>
+
+      <div className="plp_menus d-flex justify-content-between align-items-center ps-3 py-3">
+        <div className="plp_ic"> <img src={plp_header_ic} alt="plp Header ic" style={{width: '24px', height: '18px'}}/> </div>
+        
+        <div className="plp_dropdowns d-flex justify-content-between align-items-center me-auto ms-2 px-3">
+
+        <div className="dropdown">
+          <button className="btn btn-secondary dropdown-toggle body-2 text-start" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Residential <br className='MobileResponsive'/> Properties
+          </button>
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li className="dropdown-item">All</li>
+            <li className="dropdown-item">Buy Property</li>
+            <li className="dropdown-item">Rent Property</li>
+          </ul>
         </div>
-        <div className="switch-btn">
-          <div className="dropdown">
-            <button className="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown button
+
+          <div className="commercial-dropdown">
+            <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle body-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Commercial <br className='MobileResponsive'/> Properties
             </button>
-            <ul className="dropdown-menu">
-              <li><a className="dropdown-item" href="/">Commercial</a></li>
-              <li><a className="dropdown-item" href="/">Residential</a></li>
-            </ul>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li className="dropdown-item">All</li>
+                  <li className="dropdown-item">Buy Property</li>
+                  <li className="dropdown-item">Rent Property</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      <div className="headings container mt-4">
-        <p className='h1'>
-          <span>Buy</span> Your Dream <span> Commercial </span> Property
-        </p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit congue sodales. Nulla eget ex odio.</p>
-        <hr />
-      </div>
+</div>
+
       <PropertiesListing />
       <Footer />
     </div>

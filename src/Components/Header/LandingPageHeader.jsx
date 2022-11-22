@@ -7,13 +7,15 @@ import Logo from '../Logo'
 
 require('./LandingPageHeader.css')
 
-const LandingPageHeader = () => {
+const LandingPageHeader = (props) => {
+
+    const { isdark = false } = props
 
     // const seven_square_logo = require('../../assets/seven_sqaure_logo.png')
 
   return (
     <>
-        <nav className="navbar navbar-expand-lg px-sm-5 pt-4">
+        <nav className="navbar navbar-expand-lg px-sm-5 py-4" style={{backgroundColor: isdark?'#000':''}}>
             <div className="container-fluid">
                 <a className="navbar-brand me-0 ms-sm-5" href="/">
                     {/* <img className='w-100' src={seven_square_logo} alt='logo' /> */}

@@ -10,3 +10,19 @@
     color: #fff;
     background-color: #000;
 }
+.dropdown button{
+    color: #000;
+    background-color: #fff;
+    border: none;
+}
+.dropdown button:hover, .dropdown button:active, .dropdown button:focus{
+    background-color: #e4e4e4;
+    border: none;
+    color: #000;
+}
+.dropdown-menu li:active, dropdown-menu li:focus{
+    background-color: #000;
+}
+.plp_menu_main{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
