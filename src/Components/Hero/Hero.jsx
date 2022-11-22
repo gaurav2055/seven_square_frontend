@@ -40,7 +40,7 @@ const Hero = () => {
             <p className='text-white body-2 my-1'>Suspendisse condimentum massa nec lacus congue rutrum.<br className='responsive'/> Praesent eros magna, fermentum ac feugiat at, molestie quis <br className='responsive'/> ipsum. Mauris facilisis gravida diam vestibulum dignissim.</p>
           </div>
           <div className="heroCta ms-sm-5">
-            <button type="button" className="heroCtaBtn btn btn-outline-light">Explore</button>
+            <button type="button" className="heroCtaBtn btn btn-outline-light" onClick={HandelExploreBtn}>Explore</button>
           </div>
         </div>
       </div>
