@@ -12,7 +12,7 @@ const TestimonialCard = () => {
             <div className="row">
                 {testimonoialsObj.map((val, index)=>{
                     return(
-                        <div className="col-sm-3 mt-3 mt-sm-0">
+                        <div className="col-sm-3 mt-3 mt-sm-0" key={index}>
                             <div className="card p-3" style={{backgroundColor: `${val.bodyBackground}`, color: `${val.bodyTextColor}`, border:'none'}}>
                                 {val.isDoubleQuote && <img src={val.icon} alt="double_quote_img"  style={{width:'48px'}}/>}
                                 <div className="card-body">

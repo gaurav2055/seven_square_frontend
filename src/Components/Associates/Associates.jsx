@@ -10,11 +10,11 @@ import './Associates.css'
 const Associates = () => {
   return (
     <>
-        <div className="associate-main container mt-5 d-sm-flex justify-content-around align-items-center">
+        <div className="associate-main container my-5 d-sm-flex justify-content-around align-items-center">
 
           <div className="associate-left w-50">
             <div style={{
-              backgroundColor:'#c4c4c4', 
+              backgroundColor:'#e5e5e5', 
               height:'12.5rem', 
               width:'12.5rem',
               position:'relative'

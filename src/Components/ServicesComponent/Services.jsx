@@ -21,7 +21,7 @@ const Services = (props) => {
         <Slider {...settings}>
         {ServicesData.map((value, index)=>{
             return(
-                <div className="main-div mx-1">
+                <div className="main-div mx-1" key={index}>
                     <div className="img-div">
                         <img src={value.s.icon} alt=""  style={{position:'relative'}}/>
                     </div>
