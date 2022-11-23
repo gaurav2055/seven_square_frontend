@@ -9,8 +9,9 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
-import Services from './Components/ServicesComponent/Services'
+// import Services from './Components/ServicesComponent/Services'
 import Logo from './Components/Logo'
+import LoginModal from './Components/LoginModal/LoginModal'
 
 const App = () => {
   return (
@@ -20,8 +21,9 @@ const App = () => {
           <Route path='/' element={<LandingPage />} />
           <Route path='/home' element={<LandingPage />} />
           <Route path='/properties' element={<PropertyListingPage />} />
-          {/* <Route path='/services1' element={<Services />} /> */}
+          {/* <Route path='/services' element={<Services fromNavBar={true}/>} /> */}
           <Route path='/property-details' element={<OnClickProperty />} />
+          {/* <Route path='/login' element={<LoginModal />} /> */}
         </Routes>
       </Router>
 

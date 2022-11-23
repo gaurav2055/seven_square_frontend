@@ -3,18 +3,28 @@ import seven_square_logo from '../../assets/seven_square_logo.png'
 import harmburger from '../../assets/hamburger.png'
 import { Link } from 'react-router-dom'
 import Logo from '../Logo'
+import { useState } from 'react'
+import LoginModal from '../LoginModal/LoginModal'
 // import '../../index.css'
 
 require('./LandingPageHeader.css')
 
 const LandingPageHeader = (props) => {
 
+    const [openLoginModal, setOpenLoginModal] = useState(false)
+
     const { isdark = false } = props
 
     // const seven_square_logo = require('../../assets/seven_sqaure_logo.png')
+    const handelLogin = () => {
+        setOpenLoginModal(!openLoginModal)
+        console.log(openLoginModal);
+    }
 
   return (
     <>
+        { openLoginModal && <LoginModal /> }
+
         <nav className="navbar navbar-expand-lg px-sm-5 py-4" style={{backgroundColor: isdark?'#000':''}}>
             <div className="container-fluid">
                 <a className="navbar-brand me-0 ms-sm-5" href="/">
@@ -34,11 +44,15 @@ const LandingPageHeader = (props) => {
                     <li className="nav-item">
                     <Link className="nav-link text-white" to="/properties">Properties</Link>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link className="nav-link text-white" to="services">Services</Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
-                    <a href="/" className="nav-link text-white">Sell/Rent | List Property</a>
+                        <button onClick={handelLogin} className="nav-link text-white" style={{backgroundColor:'#000'}}>Sell/Rent | List Property</button>
+                        {/* <button type="button" className="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Launch demo modal
+                        </button> */}
+                        
                     </li>
                 </ul>
                 </div>

@@ -3,8 +3,14 @@ import propTypes from 'prop-types'
 import  Slider from 'react-slick'
 
 import ServicesData from '../../Data/Services'
+import LandingPageHeader from '../Header/LandingPageHeader'
+import Footer from '../Footer/Footer'
 
 const Services = (props) => {
+
+    const{
+        fromNavBar = false
+    } = props
 
     let settings = {
         dots: true,
@@ -17,6 +23,8 @@ const Services = (props) => {
   return (
     <>
   
+    { fromNavBar && <LandingPageHeader isdark={true}/> }
+    
     <div className="react-slicker w-75 mx-auto MobileResponsive my-5">
         <Slider {...settings}>
         {ServicesData.map((value, index)=>{
@@ -51,6 +59,9 @@ const Services = (props) => {
             })}
         </div>
     </div>
+
+    { fromNavBar && <Footer /> }
+
     </>
   )
 
