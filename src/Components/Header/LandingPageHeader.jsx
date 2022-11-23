@@ -11,19 +11,18 @@ require('./LandingPageHeader.css')
 
 const LandingPageHeader = (props) => {
 
-    const [openLoginModal, setOpenLoginModal] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     const { isdark = false } = props
 
     // const seven_square_logo = require('../../assets/seven_sqaure_logo.png')
     const handelLogin = () => {
-        setOpenLoginModal(!openLoginModal)
-        console.log(openLoginModal);
+        setShowModal(!showModal)
     }
 
   return (
     <>
-        { openLoginModal && <LoginModal /> }
+        { showModal && <LoginModal /> }
 
         <nav className="navbar navbar-expand-lg px-sm-5 py-4" style={{backgroundColor: isdark?'#000':''}}>
             <div className="container-fluid">
@@ -48,7 +47,7 @@ const LandingPageHeader = (props) => {
                         <Link className="nav-link text-white" to="services">Services</Link>
                     </li> */}
                     <li className="nav-item">
-                        <button onClick={handelLogin} className="nav-link text-white" style={{backgroundColor:'#000'}}>Sell/Rent | List Property</button>
+                        <button onClick={handelLogin} className="nav-link text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ background:'none', border:'none' }}>Sell/Rent | List Property</button>
                         {/* <button type="button" className="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Launch demo modal
                         </button> */}
