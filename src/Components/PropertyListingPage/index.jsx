@@ -34,7 +34,7 @@ const PropertyListingPage = () => {
           </ul>
         </div>
 
-          <div className="commercial-dropdown">
+          <div className="commercial-dropdown ms-sm-5">
             <div className="dropdown">
             <button className="btn btn-secondary dropdown-toggle body-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Commercial <br className='MobileResponsive'/> Properties

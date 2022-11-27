@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CommonHeader from '../Header/CommonHeader'
 import Card from './Card'
 
@@ -9,19 +9,42 @@ import bedrooms_ic from '../../assets/bedrooms_ic.png'
 import furniture_ic from '../../assets/furniture_ic.png'
 import amenities from '../../Data/Amenities'
 import LandingPageHeader from '../Header/LandingPageHeader'
+import axios from 'axios'
+import { useState } from 'react'
+import { useParams, useSearchParams } from 'react-router-dom'
 
 const OnClickProperty = () => {
+
+  const [singlePropertyData, setSinglePropertyData] = useState()
 
   const img1 = "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
   const img2 = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1400&q=80"
   const img3 = "https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
   const img4 = "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZSUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
 
+  const localBaseUrl = 'http://localhost:8080/'
+
+  // const [searchParams, setSearchParams] = useSearchParams()
+  // searchParams.get("__firebase_request_key")
+  // const { propertyId } = useParams()
+
+  // console.log(propertyId);
+
+  const propertyId = "GDEyZETmrHZhoiVahWaF"
+
+  //API Calls
+  useEffect(()=>{
+    axios.get(`${localBaseUrl}api/property/getProperty?id=${propertyId}`).then((reponse)=>{
+      setSinglePropertyData(reponse.data.message)
+    })
+  }, [])
+
+  // console.log(singlePropertyData.imgArra)
 
   return (
     <>
     <LandingPageHeader isdark={true}/>
-    <div className='container container-main mt-4 d-sm-flex justify-content-between align-items-start'>
+    <div className='container container-main mt-4 d-md-flex justify-content-between align-items-start'>
 
       <div className="carousel-section w-100 w-sm-75 mx-auto mx-sm-0">
 
@@ -33,13 +56,13 @@ const OnClickProperty = () => {
           </div>
           <div className="carousel-inner" style={{maxHeight: '500px'}}>
             <div className="carousel-item active">
-              <img src={img4} className="d-block w-100" alt="..."/>
+              <img src={singlePropertyData.imgArra[0]} className="d-block w-100" alt="..."/>
             </div>
             <div className="carousel-item">
-              <img src={img2} className="d-block w-100" alt="..."/>
+              <img src={singlePropertyData.imgArra[1]} className="d-block w-100" alt="..."/>
             </div>
             <div className="carousel-item">
-              <img src={img1} className="d-block w-100" alt="..."/>
+              <img src={singlePropertyData.imgArra[2]} className="d-block w-100" alt="..."/>
             </div>
           </div>
           <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
