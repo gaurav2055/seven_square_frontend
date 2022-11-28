@@ -39,7 +39,7 @@ const OnClickProperty = () => {
 
   //API Calls
   useEffect(()=>{
-    axios.get(`${localBaseUrl}api/property/getProperty?id=${propertyId}`).then((reponse)=>{
+    axios.get(`${devBaseUrl}api/property/getProperty?id=${propertyId}`).then((reponse)=>{
       setSinglePropertyData(reponse?.data?.message)
     })
   }, [propertyId])
