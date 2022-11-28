@@ -24,7 +24,7 @@ const PropertiesListing = () => {
   const navigate = useNavigate()
 
   const OnClickPropertyHandler = (propertyId)=>{
-    navigate(`/property-details/${propertyId}`)
+    navigate(`/property-details`, {state:{id: propertyId}})
   }
 
   // var result = Object.keys(propertiesData).map((key) => [Number(key), propertiesData[key]]);
