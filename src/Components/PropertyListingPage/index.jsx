@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../Footer/Footer'
 import LandingPageHeader from '../Header/LandingPageHeader'
 import plp_header_ic from '../../assets/plp_header_ic.png'
@@ -6,8 +6,26 @@ import downArrow_ic from '../../assets/downArrow_ic.png'
 
 import './index.css'
 import PropertiesListing from './PropertiesListing'
+import axios from 'axios'
+import { useState } from 'react'
 
 const PropertyListingPage = () => {
+
+  const [filteredProperty, setFilteredProperty] = useState()
+  const [propertyTypeAction, setPropertyTypeAction] = useState()
+  const [propertyType, setPropertyType] = useState()
+
+  const localBaseUrl = 'http:/localhost:8080/'
+  const devBaseUrl = 'https://sevensquarerealtors.up.railway.app'
+
+  useEffect(()=>{
+    axios.get(`${devBaseUrl}api/property/getPropertiesByType?propertyActionType=${propertyTypeAction}&type=${propertyType}`).then((response)=>{
+      setFilteredProperty(response.data.message)
+    })
+  }, [propertyTypeAction, propertyType])
+
+  console.log(filteredProperty);
+
   return (
     <div>
       <LandingPageHeader isdark={true}/>

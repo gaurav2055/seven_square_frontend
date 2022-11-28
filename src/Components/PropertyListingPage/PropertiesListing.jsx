@@ -17,7 +17,7 @@ const PropertiesListing = () => {
   const [propertiesData, setPropertiesData] = useState([])
 
   useEffect( () => {
-    axios.get(`${localBaseUrl}api/property/getProperties`).then((response)=>{
+    axios.get(`${devBaseUrl}api/property/getProperties`).then((response)=>{
       setPropertiesData(response.data.message)
   })
   }, [])
