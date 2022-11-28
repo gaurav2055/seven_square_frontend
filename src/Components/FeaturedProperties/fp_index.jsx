@@ -1,5 +1,6 @@
-import React from 'react'
+import { React, useEffect, useState } from 'react'
 import Slider from 'react-slick'
+import axios from 'axios'
 
 import fp_img_1 from '../../assets/fp_img_1.png'
 import fp_img_2 from '../../assets/fp_img_2.png'
@@ -17,6 +18,19 @@ let settings = {
   }
 
 const FeaturedProperties = () => {
+
+    const [featuredPropertyData, setFeaturedPropertyData] = useState()
+
+    const localBaseUrl = "http://localhost:8080/"
+    const devBaseUrl = "https://sevensquarerealtors.up.railway.app/"
+
+    // useEffect(()=>{
+    //     axios.get(`${devBaseUrl}api/property/getProperty?feature=true`).then((reponse)=>{
+    //       setFeaturedPropertyData(reponse?.data?.message)
+    //     })
+    //   }, [])
+    //   console.log(featuredPropertyData);
+
   return (
     <>
 

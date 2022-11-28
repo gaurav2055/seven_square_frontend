@@ -32,6 +32,7 @@ const OnClickProperty = () => {
   const img4 = "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZSUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
 
   const localBaseUrl = 'http://localhost:8080/'
+  const devBaseUrl = 'https://sevensquarerealtors.up.railway.app/'
 
   const location = useLocation()
   const propertyId = location?.state?.id

@@ -12,6 +12,7 @@ import { useState } from 'react'
 const PropertiesListing = () => {
 
   const localBaseUrl = 'http://localhost:8080/'
+  const devBaseUrl = 'https://sevensquarerealtors.up.railway.app/'
 
   const [propertiesData, setPropertiesData] = useState([])
 
