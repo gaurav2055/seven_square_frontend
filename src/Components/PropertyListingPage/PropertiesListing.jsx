@@ -9,10 +9,12 @@ import Images from '../../Data/Images'
 import { useState } from 'react'
 // import { getAllProperties } from '../../ApiEndpoints'
 
-const PropertiesListing = () => {
+const PropertiesListing = (props) => {
 
   const localBaseUrl = 'http://localhost:8080/'
   const devBaseUrl = 'https://sevensquarerealtors.up.railway.app/'
+
+  // console.log(props.data);
 
   const [propertiesData, setPropertiesData] = useState([])
 
@@ -22,6 +24,9 @@ const PropertiesListing = () => {
   })
   }, [])
 
+  // if(props.data != undefined){
+  //   setPropertiesData(props.data)
+  // }
   const navigate = useNavigate()
 
   const OnClickPropertyHandler = (propertyId)=>{
@@ -35,7 +40,6 @@ const PropertiesListing = () => {
     <div className='container mt-4'>
         <div className="masonry">
           {propertiesData.map((val, index)=>{
-            console.log(val)
             return(
                 <div className="img-card mb-3" onClick={()=> OnClickPropertyHandler(val.id)} key={index}>
                   <img src={val.mainImg} alt="propertyImg" />
