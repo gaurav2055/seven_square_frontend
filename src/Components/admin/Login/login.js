@@ -61,7 +61,7 @@ function Login() {
 									<button type='submit' className='btn btn-primary'>
 										Login
 									</button>
-									{errorMessage && <p className='validate'>Wrong Email or Password</p>}
+									{errorMessage && <p className='validation'>Wrong Email or Password</p>}
 								</div>
 							</form>
 						</div>
