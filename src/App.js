@@ -23,7 +23,7 @@ const App = () => {
 					<Route path='/properties' element={<PropertyListingPage />} />
 					<Route path='/services1' element={<Services />} />
 					<Route path='/property-details' element={<OnClickProperty />} />
-					<Route path='/admin-login' element={<Login />} />
+					<Route path='/admin' element={<Login />} />
 					<Route path='/admin-properties' element={<Properties />} />
 					<Route path='/admin-users' element={<Users />} />
 					<Route path='/admin-AddProperties' element={<AddProperty />} />

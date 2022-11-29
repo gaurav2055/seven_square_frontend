@@ -1,8 +1,21 @@
+import { signOut } from "firebase/auth";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import seven_square_realtors_logo_white from "../../../assets/seven_square_logo.png";
+import { auth } from "../../../Firebase/FBInit";
 
 function NavBar() {
+	const navigate = useNavigate();
+	const logout = () => {
+		signOut(auth)
+			.then(() => {
+				// Sign-out successful.
+				navigate("/admin");
+			})
+			.catch((error) => {
+				// An error happened.
+			});
+	};
 	return (
 		<>
 			<nav className='navbar navbar-expand-lg bg-dark'>
@@ -33,6 +46,11 @@ function NavBar() {
 							<li className='nav-items px-2'>
 								<Link className='nav-link text-white' aria-current='page' to='/admin-AddProperties'>
 									Add Properties
+								</Link>
+							</li>
+							<li className='nav-items px-2'>
+								<Link className='nav-link text-white' aria-current='page' to='#' onClick={logout}>
+									Logout
 								</Link>
 							</li>
 						</ul>

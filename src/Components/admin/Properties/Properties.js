@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../Navbar/NavBar";
 import { propApi } from "../../../axios";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../../../Firebase/FBInit";
 
 function Properties() {
 	const [properties, setProperties] = useState([]);
@@ -10,13 +11,19 @@ function Properties() {
 	let navigate = useNavigate();
 	useEffect(() => {
 		const getProps = async () => {
-			try {
-				const response = await propApi.get("/getProperties");
-				console.log(response.data.message);
-				setProperties(response.data.message);
-			} catch (error) {
-				console.log(error.response.data.message);
-			}
+			auth.onAuthStateChanged(async (user) => {
+				if (user) {
+					try {
+						const response = await propApi.get("/getProperties");
+						console.log(response.data.message);
+						setProperties(response.data.message);
+					} catch (error) {
+						console.log(error.response.data.message);
+					}
+				} else {
+					navigate("/admin");
+				}
+			});
 		};
 		getProps();
 	}, [reload]);

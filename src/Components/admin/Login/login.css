@@ -11,3 +11,11 @@
 	--bs-btn-font-size: 1.2rem;
 	--bs-btn-border-radius: 0.5rem;
 }
+
+.validation {
+	color: red;
+	/* font-weight: bold; */
+	font-style: italic;
+	margin-top: 0.5rem !important;
+	margin-left: 00.5rem !important;
+}

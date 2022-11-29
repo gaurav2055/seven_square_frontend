@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { useForm } from "react-hook-form";
+
 import logo from "../../../assets/seven_square_logo.png";
 import "./login.css";
 
+import { auth } from "../../../Firebase/FBInit";
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 function Login() {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+	const navigate = useNavigate();
+	const [errorMessage, setErrorMessage] = useState("");
+
+	const onSubmit = (data) => {
+		signInWithEmailAndPassword(auth, data.email, data.password)
+			.then((userCredential) => {
+				// Signed in
+				var user = userCredential.user;
+				navigate("/admin-properties");
+				// ...
+			})
+			.catch((error) => {
+				var errorCode = error.code;
+				setErrorMessage(error.message);
+			});
+	};
+
 	return (
 		<>
 			{/* <div className='container'> */}
@@ -14,23 +43,25 @@ function Login() {
 								<img className='img-fluid my-2' src={logo} alt='Logo' />
 								<h2>Login</h2>
 							</div>
-							<form className='pt-3 mb-5'>
-								<div class='mb-3 px-3'>
-									<label for='exampleInputEmail1' class='form-label'>
+							<form className='pt-3 mb-5' onSubmit={handleSubmit(onSubmit)}>
+								<div className='mb-3 px-3'>
+									<label htmlFor='exampleInputEmail1' className='form-label'>
 										Email address
 									</label>
-									<input type='email' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp' />
+									<input type='email' className='form-control' {...register("email", { required: "Required" })} />
+									{errors.email && <p className='validation'>Required</p>}
 								</div>
-								<div class='mb-3 px-3'>
-									<label for='exampleInputPassword1' class='form-label'>
+								<div className='mb-3 px-3'>
+									<label htmlFor='exampleInputPassword1' className='form-label'>
 										Password
 									</label>
-									<input type='password' class='form-control' id='exampleInputPassword1' />
+									<input type='password' className='form-control' {...register("password", { required: "Required" })} />
 								</div>
 								<div className='text-center'>
-									<button type='submit' class='btn btn-primary'>
+									<button type='submit' className='btn btn-primary'>
 										Login
 									</button>
+									{errorMessage && <p className='validate'>Wrong Email or Password</p>}
 								</div>
 							</form>
 						</div>
