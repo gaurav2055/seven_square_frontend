@@ -26,12 +26,12 @@ function NavBar() {
 								</Link>
 							</li>
 							<li className='nav-items px-2'>
-								<Link className='nav-link text-white' aria-current='page' to='/admin-properties'>
+								<Link className='nav-link text-white' aria-current='page' to='/admin-testimonials'>
 									Testimonials
 								</Link>
 							</li>
 							<li className='nav-items px-2'>
-								<Link className='nav-link text-white' aria-current='page' to='/admin-properties'>
+								<Link className='nav-link text-white' aria-current='page' to='/admin-AddProperties'>
 									Add Properties
 								</Link>
 							</li>

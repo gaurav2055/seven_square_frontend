@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { getDocs, collection } from "firebase/firestore";
-import { db } from "../../../Firebase/FBInit";
+import { userApi } from "../../../axios";
 
 import NavBar from "../Navbar/NavBar";
 
@@ -9,12 +8,13 @@ function Users() {
 	const [users, setUsers] = useState([]);
 	useEffect(() => {
 		const getUsers = async () => {
-			const data = await getDocs(collection(db, "user"));
-			setUsers(
-				data.docs.map((doc) => ({
-					...doc.data(),
-				}))
-			);
+			try {
+				const response = await userApi.get("/getUser");
+				setUsers(response.data.message);
+			} catch (error) {
+				console.log(error.response.data.message);
+				alert(error.response.data.message);
+			}
 		};
 		getUsers();
 	}, []);

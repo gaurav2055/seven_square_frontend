@@ -20,7 +20,7 @@ const UserLogin = () => {
 				callback: (response) => {
 					// reCAPTCHA solved, allow signInWithPhoneNumber.
 					console.log("captcha Resolved");
-					userAuth();
+					// userAuth();
 				},
 			},
 			auth
@@ -42,8 +42,7 @@ const UserLogin = () => {
 			})
 			.catch((error) => {
 				// Handle Errors here.
-				const errorCode = error.code;
-				const errorMessage = error.message;
+				console.log(error.message);
 			});
 	};
 
@@ -51,7 +50,7 @@ const UserLogin = () => {
 		const code = data.otp;
 		const optConfirm = window.confirmationResult;
 		optConfirm.confirm(code).then((result) => {
-			let user = result.user;
+			// let user = result.user;
 			console.log("user Signed in");
 			navigate("/property-details");
 		});

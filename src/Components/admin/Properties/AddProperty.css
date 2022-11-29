@@ -1,0 +1,15 @@
+.validation {
+	color: red;
+	/* font-weight: bold; */
+	font-style: italic;
+	margin-top: 0.5rem !important;
+	margin-left: 00.5rem !important;
+}
+
+.w-25 {
+	width: 25%;
+}
+
+.no-border {
+	border: 0ch !important;
+}
