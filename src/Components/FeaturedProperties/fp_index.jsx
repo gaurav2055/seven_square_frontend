@@ -24,13 +24,12 @@ const FeaturedProperties = () => {
     const localBaseUrl = "http://localhost:8080/"
     const devBaseUrl = "https://sevensquarerealtors.up.railway.app/"
 
-    // useEffect(()=>{
-    //     axios.get(`${devBaseUrl}api/property/getProperty?feature=true`).then((reponse)=>{
-    //       setFeaturedPropertyData(reponse?.data?.message)
-    //     })
-    //   }, [])
-    //   console.log(featuredPropertyData);
-
+    useEffect(()=>{
+    axios.get(`${devBaseUrl}api/property/getFeatureProperties`).then((reponse)=>{
+        setFeaturedPropertyData(reponse?.data?.message)
+    })
+    }, [])
+    
   return (
     <>
 
@@ -60,15 +59,23 @@ const FeaturedProperties = () => {
             <div className="featured_properties_right container mt-5 mt-sm-0" style={{maxWidth: '500px'}}>
             <Slider {...settings}>
 
-                    <div className="d-flex" style={{ border: 'none'}}>
+                {featuredPropertyData?.map((val, index)=>{
+                    return(
+                        <div className="d-flex" style={{ border: 'none'}} key={index}>
+                        <img className="card-img-top" src={val.mainImg} alt="property image cap"/>
+                    </div>
+                    )
+                })}
+
+                    {/* <div className="d-flex" style={{ border: 'none'}}>
                         <img className="card-img-top" src={fp_img_1} alt="property image cap"/>
                     </div>
                     <div className="d-flex" style={{ border: 'none'}}>
                         <img className="card-img-top" src={fp_img_2} alt="property image cap"/>
                     </div>
                     <div className="d-flex" style={{ border: 'none'}}>
-                        <img className="card-img-top" src={fp_img_1} alt="property image cap"/>
-                    </div>
+                        <img className="card-img-top" src={featuredPropertyData['mainImg']} alt="property image cap"/>
+                    </div> */}
             </Slider>
             </div>
         </div>
