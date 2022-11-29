@@ -1,28 +1,43 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import LandingPageHeader from '../Header/LandingPageHeader'
 import plp_header_ic from '../../assets/plp_header_ic.png'
 import downArrow_ic from '../../assets/downArrow_ic.png'
 
 import './index.css'
-import PropertiesListing from './PropertiesListing'
+import './PropertyListing.css'
 import axios from 'axios'
 import { useState } from 'react'
 
 const PropertyListingPage = () => {
 
-  const [filteredProperty, setFilteredProperty] = useState()
+  // const [filteredProperty, setFilteredProperty] = useState()
   const [propertyTypeAction, setPropertyTypeAction] = useState('')
   const [propertyType, setPropertyType] = useState('')
+  const [propertiesData, setPropertiesData] = useState([])
 
   const localBaseUrl = 'http:/localhost:8080/'
   const devBaseUrl = 'https://sevensquarerealtors.up.railway.app/'
 
   useEffect(()=>{
     axios.get(`${devBaseUrl}api/property/getPropertiesByType?propertyActionType=${propertyTypeAction}&type=${propertyType}`).then((response)=>{
-      setFilteredProperty(response.data.message)
+      setPropertiesData(response.data.message)
     })
   }, [propertyTypeAction, propertyType])
+
+
+  useEffect( () => {
+    axios.get(`${devBaseUrl}api/property/getProperties`).then((response)=>{
+      setPropertiesData(response.data.message)
+  })
+  }, [])
+
+  const navigate = useNavigate()
+
+  const OnClickPropertyHandler = (propertyId)=>{
+    navigate(`/property-details`, {state:{id: propertyId}})
+  }
 
   const handleResidential = (e) => {
     setPropertyType('Residential')
@@ -100,7 +115,25 @@ const PropertyListingPage = () => {
       </div>
 </div>
 
-      <PropertiesListing data={filteredProperty}/>
+<div className='container mt-4'>
+        <div className="masonry">
+          {propertiesData.map((val, index)=>{
+            return(
+                <div className="img-card mb-3" onClick={()=> OnClickPropertyHandler(val.id)} key={index}>
+                  <img src={val.mainImg} alt="propertyImg" />
+                  <div className="overlay">
+                    <p className='heading-3 px-4 pt-3 mb-0'> {val.carpetArea} sqft.</p>
+                    <p className='property body-2  px-4' style={{maxWidth: '10'}}> {
+                      String(val.About).substring(0,100)
+                      } </p>
+                  </div>
+                </div>
+            )
+          })}
+        </div>
+    </div>
+
+      {/* <PropertiesListing data={filteredProperty}/> */}
       <Footer />
     </div>
   )
