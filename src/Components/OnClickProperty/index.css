@@ -1,0 +1,9 @@
+/* .carousel-item{
+    width: auto;
+    height: 400px;
+} */
+.carousel-item img{
+    width: auto;
+    height: 31.25rem;
+    object-fit: contain;
+}
