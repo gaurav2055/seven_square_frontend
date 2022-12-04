@@ -1,14 +1,16 @@
-.associate-right{
-    display: grid;
-    grid-template-columns: auto auto auto;
+.associate-right {
+	display: grid;
+	grid-template-columns: 33.33% 33.33% 33.33%;
+	max-width: 30rem;
+	max-height: 30rem;
 }
 .grid-item {
-    padding: 5px;
-    text-align: center;
+	padding: 5px;
+	text-align: center;
 }
 
-@media screen and (max-width:600px){
-    .associate-right{
-        margin-top: -120px;
-    }
+@media screen and (max-width: 600px) {
+	.associate-right {
+		margin-top: -120px;
+	}
 }

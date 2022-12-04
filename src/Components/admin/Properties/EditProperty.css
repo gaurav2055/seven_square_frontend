@@ -1,0 +1,38 @@
+.validation {
+	color: red;
+	/* font-weight: bold; */
+	font-style: italic;
+	margin-top: 0.5rem !important;
+	margin-left: 00.5rem !important;
+}
+
+.w-25 {
+	width: 25%;
+}
+
+.no-border {
+	border: 0ch !important;
+}
+
+.flex {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.imgDele {
+	top: 0;
+	right: 0;
+	position: absolute;
+}
+
+.btn-close1 {
+	background: url("../../../assets/download.png") center/1em auto no-repeat;
+	opacity: 1;
+	box-sizing: content-box;
+	width: 1em;
+	height: 1em;
+	padding: 0.25em 0.25em;
+	color: #000;
+	border: 0;
+	border-radius: 0.375rem;
+}

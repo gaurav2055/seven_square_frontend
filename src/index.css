@@ -1,115 +1,167 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Source+Sans+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Source+Sans+Pro&display=swap");
 
 /* font-family: 'Open Sans', sans-serif;
 font-family: 'Source Sans Pro', sans-serif; */
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Source Sans Pro', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Source Sans Pro", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
 }
 
 /* Heading - Desktop */
-.heading-1{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 32px;
-  font-weight: 600px;
+.heading-1 {
+	font-family: "Open Sans", sans-serif;
+	font-size: 32px;
+	font-weight: 600;
 }
-.heading-2{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 28px;
-  font-weight: 600px;
+.heading-2 {
+	font-family: "Open Sans", sans-serif;
+	font-size: 28px;
+	font-weight: 600;
 }
-.heading-3{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
-  font-weight: 700px;
+.heading-3 {
+	font-family: "Open Sans", sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 992px) {
+	.heading-1 {
+		font-family: "Open Sans", sans-serif;
+		font-size: 30px;
+		font-weight: 600;
+	}
+	.heading-2 {
+		font-family: "Open Sans", sans-serif;
+		font-size: 26px;
+		font-weight: 600;
+	}
+	.heading-3 {
+		font-family: "Open Sans", sans-serif;
+		font-size: 16px;
+		font-weight: 700;
+	}
 }
 
 /* Heading - Mobile */
-@media screen and (max-width: 600px){
-  .heading-1{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 28px;
-    font-weight: 600px;
-  }
-  .heading-2{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 24px;
-    font-weight: 600px;
-  }
-  .heading-3{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 700px;
-  }
+@media screen and (max-width: 600px) {
+	.heading-1 {
+		font-family: "Open Sans", sans-serif;
+		font-size: 28px;
+		font-weight: 600;
+	}
+	.heading-2 {
+		font-family: "Open Sans", sans-serif;
+		font-size: 24px;
+		font-weight: 600;
+	}
+	.heading-3 {
+		font-family: "Open Sans", sans-serif;
+		font-size: 14px;
+		font-weight: 700;
+	}
 }
 
 /* Body - Desktop */
-.body-1{
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
+.body-1 {
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 18px;
+	font-weight: 400;
 }
-.body-2{
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+.body-2 {
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 16px;
+	font-weight: 400;
 }
-.body-3{
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+.body-3 {
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+@media screen and (max-width: 992px) {
+	.body-1 {
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+	}
+	.body-2 {
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 14px;
+		font-weight: 400;
+	}
+	.body-3 {
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 12px;
+		font-weight: 400;
+	}
 }
 
 /* Body - Mobile */
-@media screen and (max-width: 600px){
-  .body-1{
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-  }
-  .body-2{
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-  }
-  .body-3{
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-  }
+@media screen and (max-width: 600px) {
+	.body-1 {
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 14px;
+		font-weight: 400;
+	}
+	.body-2 {
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+	}
+	.body-3 {
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 10px;
+		font-weight: 400;
+	}
 }
 
 /* Colors */
-.whiteColor{
-  color: #fff;
+.whiteColor {
+	color: #fff;
 }
-.blackColor{
-  color: #000
+.blackColor {
+	color: #000;
 }
 
 /* Responsive Classes */
-.responsive{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.responsive {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-@media screen and (max-width: 600px) {
-  .responsive{
-    display: none;
-  }
+@media screen and (max-width: 768px) {
+	.responsive {
+		display: none;
+	}
 }
 
-.MobileResponsive{
-  display: none;
+.MobileResponsive {
+	display: none;
 }
-@media screen and (max-width: 900px) {
-  .MobileResponsive{
-    display: block;
-  }
+@media screen and (max-width: 768px) {
+	.MobileResponsive {
+		display: block;
+	}
+}
+
+.wh-75 {
+	width: 50%;
+}
+
+@media screen and (max-width: 576px) {
+	.wh-75 {
+		width: 75%;
+	}
+}
+
+@media screen and (max-width: 390px) {
+	.wh-75 {
+		width: 100%;
+	}
 }

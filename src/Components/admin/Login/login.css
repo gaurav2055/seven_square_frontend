@@ -1,0 +1,21 @@
+.center {
+	margin-top: 5%;
+	/* margin-left: 20; */
+	/* width: 50% !important; */
+	/* border: 3px; */
+	padding: 10px;
+}
+
+.btn {
+	--bs-btn-padding-x: 2rem;
+	--bs-btn-font-size: 1.2rem;
+	--bs-btn-border-radius: 0.5rem;
+}
+
+.validation {
+	color: red;
+	/* font-weight: bold; */
+	font-style: italic;
+	margin-top: 0.5rem !important;
+	margin-left: 00.5rem !important;
+}
