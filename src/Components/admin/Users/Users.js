@@ -1,31 +1,46 @@
+import { onAuthStateChanged } from "firebase/auth";
 import React from "react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { userApi } from "../../../axios";
+import { auth } from "../../../Firebase/FBInit";
+import Alert from "../../Alert/alert";
 
 import NavBar from "../Navbar/NavBar";
 
 function Users() {
 	const [users, setUsers] = useState([]);
+	const [loader, setLoader] = useState(false);
+	const navigate = useNavigate();
 	useEffect(() => {
 		const getUsers = async () => {
-			try {
-				const response = await userApi.get("/getUser");
-				setUsers(response.data.message);
-			} catch (error) {
-				console.log(error.response.data.message);
-				alert(error.response.data.message);
-			}
+			setLoader(true);
+			onAuthStateChanged(auth, async (user) => {
+				if (user && user?.email) {
+					try {
+						const response = await userApi.get("/getUser");
+						setUsers(response.data.message);
+					} catch (error) {
+						setLoader(false);
+						// console.log(error.response.data.message);
+						alert(error.response.data.message);
+					}
+				} else {
+					navigate("/admin");
+				}
+			});
+
+			setLoader(false);
 		};
 		getUsers();
 	}, []);
 	return (
 		<>
 			<NavBar />
+			{loader && <Alert />}
 			<div className=' headings container mt-5'>
-				<h1>Users</h1>
-				<h5 className='text-muted' style={{ fontWeight: "normal" }}>
-					View Users here
-				</h5>
+				<p className='heading-1 mb-1'>Users</p>
+				<p className='body-1 text-muted'>View Users here</p>
 				<hr />
 			</div>
 			<div className='container pt-4'>

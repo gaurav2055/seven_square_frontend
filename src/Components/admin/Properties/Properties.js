@@ -5,25 +5,27 @@ import { propApi } from "../../../axios";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../../Firebase/FBInit";
 import { onAuthStateChanged } from "firebase/auth";
+import Alert from "../../Alert/alert";
 
 function Properties() {
 	const [properties, setProperties] = useState([]);
 	const [reload, setReload] = useState(true);
-	let navigate = useNavigate();
+	const [loader, setLoader] = useState(false);
+	const navigate = useNavigate();
 	useEffect(() => {
 		const getProps = async () => {
 			onAuthStateChanged(auth, async (user) => {
-				if (user) {
+				if (user && user?.email) {
+					setLoader(true);
 					try {
-						console.log(user);
 						const response = await propApi.get("/getProperties");
-						console.log(response.data.message);
 						setProperties(response.data.message);
 					} catch (error) {
-						console.log(error.response.data.message);
+						// console.log(error.response.data.message);
 					}
+					setLoader(false);
 				} else {
-					console.log('no user');
+					// console.log("no user");
 					navigate("/admin");
 				}
 			});
@@ -34,10 +36,10 @@ function Properties() {
 	const deleteProp = async (id) => {
 		try {
 			const response = await propApi.delete(`/deleteProperty?id=${id}`);
-			console.log(response);
+			// console.log(response);
 			setReload(!reload);
 		} catch (error) {
-			console.log(error.response.data.message);
+			// console.log(error.response.data.message);
 			alert(error.response.data.message);
 		}
 	};
@@ -45,13 +47,13 @@ function Properties() {
 	const checkbox = async (box, value, id) => {
 		const data = {};
 		data[box] = value;
-		console.log(data);
-		console.log(id);
+		// console.log(data);
+		// console.log(id);
 		try {
 			const response = await propApi.put(`/updateProperty?id=${id}`, data);
 			alert(response.data.message);
 		} catch (error) {
-			console.log(error.response.data.message);
+			// console.log(error.response.data.message);
 			alert(error.response.data.message);
 		}
 	};
@@ -65,6 +67,7 @@ function Properties() {
 	return (
 		<>
 			<NavBar />
+			{loader && <Alert />}
 			<div className=' headings container mt-5'>
 				<h1>Properties</h1>
 				<h5 className='text-muted' style={{ fontWeight: "normal" }}>

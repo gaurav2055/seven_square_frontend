@@ -1,46 +1,61 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 
-import About from '../About/About'
-import Hero from '../Hero/Hero'
-import Services from '../ServicesComponent/Services'
-import Footer from '../Footer/Footer'
-import Associates from '../Associates/Associates'
-import TestimonialCard from '../Testimonials/TestimonialCard'
-import FeaturedProperties from '../FeaturedProperties/fp_index'
-
+import About from "../About/About";
+import Hero from "../Hero/Hero";
+import Services from "../ServicesComponent/Services";
+import Footer from "../Footer/Footer";
+import Associates from "../Associates/Associates";
+import TestimonialCard from "../Testimonials/TestimonialCard";
+import FeaturedProperties from "../FeaturedProperties/fp_index";
+import { detailsApi } from "../../axios";
+import LandingPageHeader from "../Header/LandingPageHeader";
 
 const LandingPage = () => {
-  return (
-    <>
-    <section className='HeroComponent'>
-      <Hero />
-    </section>  
+	const [detail, setDetail] = useState({});
+	useEffect(() => {
+		const setData = async () => {
+			try {
+				const response = await detailsApi.get("/getDetails");
+				setDetail(response.data.message);
+			} catch (error) {}
+		};
+		setData();
+	}, []);
 
-    <section className='AboutComponent'>
-      <About /> 
-    </section>
+	return (
+		<>
+			<div className='nav-bar-comp'>
+				<LandingPageHeader />
+			</div>
+			<section className='HeroComponent'>
+				<Hero details={detail} />
+			</section>
 
-    <section className="ServicesSection my-5">
-      <Services />
-    </section>
+			<section className='AboutComponent'>
+				<About details={detail} />
+			</section>
 
-    <section className='partners'>
-      <Associates />
-    </section>
+			<div className='FeaturedProperty-section'>
+				<FeaturedProperties details={detail} />
+			</div>
 
-    <div className="testimonials-section">
-      <FeaturedProperties />
-    </div>
+			<section className='ServicesSection my-5'>
+				<Services details={detail} />
+			</section>
 
-    <div className="testimonials-section">
-      <TestimonialCard />
-    </div>
+			<section className='partners'>
+				<Associates details={detail} />
+			</section>
 
-    <section className='footer'>
-      <Footer />
-    </section>
-    </>
-  )
-}
+			<div className='testimonials-section'>
+				<TestimonialCard details={detail} />
+			</div>
 
-export default LandingPage
+			<section className='footer'>
+				<Footer />
+			</section>
+		</>
+	);
+};
+
+export default LandingPage;

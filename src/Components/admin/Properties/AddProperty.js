@@ -6,7 +6,10 @@ import "./AddProperty.css";
 import { propApi } from "../../../axios";
 
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage } from "../../../Firebase/FBInit";
+import { auth, storage } from "../../../Firebase/FBInit";
+import Alert from "../../Alert/alert";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
 
 function AddProperty() {
 	const {
@@ -15,6 +18,7 @@ function AddProperty() {
 		formState: { errors },
 		getValues,
 		resetField,
+		reset,
 	} = useForm();
 
 	const [show, setShow] = useState(false);
@@ -25,16 +29,28 @@ function AddProperty() {
 	const [mImgVal, setMImgVal] = useState(true);
 	const [imgVal, setImgVal] = useState(true);
 	const [imgDis, setImgDis] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (urlArray.length > 5) {
 			setImgDis(true);
+		} else {
+			setImgDis(false);
 		}
 	}, [urlArray]);
 
+	useEffect(() => {
+		onAuthStateChanged(auth, (user) => {
+			console.log(!user.email);
+			if (!user?.email) {
+				navigate("/admin");
+			}
+		});
+	}, []);
+
 	const upload = (refer) => {
 		// event.preventDefault();
-		console.log(getValues(refer));
+		// console.log(getValues(refer));
 		var propImg = getValues(refer);
 		propImg = Object.values(propImg);
 		// propImg.forEach((img) => {
@@ -50,19 +66,19 @@ function AddProperty() {
 				"state_changed",
 				(snapshot) => {
 					const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-					console.log(progress);
-					console.log(typeof progress);
+					// console.log(progress);
+					// console.log(typeof progress);
 					if (progress === 100) {
 						setShow(false);
 					}
 				},
 				(error) => {
-					console.log(error.code);
+					// console.log(error.code);
 					setShow(false);
 				},
 				() => {
 					getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-						console.log("File available at", downloadURL);
+						// console.log("File available at", downloadURL);
 						if (refer === "mImages") {
 							setUrl(downloadURL);
 							setMainImgRef("path");
@@ -76,26 +92,30 @@ function AddProperty() {
 				}
 			);
 			resetField(refer);
-			console.log(typeof urlArray);
+			// console.log(typeof urlArray);
 		}
 	};
 	const addNewProp = async (data) => {
+		setShow(true);
 		data.imgArra = urlArray;
 		data.mainImg = url;
 		data.mainImgRef = mainImgRef;
 		data.ImgRef = imgRef;
 		delete data.mImages;
 		delete data.images;
-		console.log(data);
+		// console.log(data);
 		try {
 			const response = await propApi.post("/addProperty", data);
-			console.log(response);
+			// console.log(response);
 			alert("property added");
-			window.location.reload();
+			// window.location.reload();
+			reset();
 		} catch (error) {
-			console.log(error.message);
+			// console.log(error.message);
+			setShow(false);
 			alert(error.response.data.message);
 		}
+		setShow(false);
 	};
 	return (
 		<>
@@ -107,19 +127,7 @@ function AddProperty() {
 				</h5>
 				<hr />
 			</div>
-			{show && (
-				<div className='modal' data-bs-backdrop='static'>
-					<div className='modal-dialog modal-dialog-centered'>
-						<div className='modal-content no-border'>
-							<div className='d-flex justify-content-center'>
-								<div className='spinner-border m-4' role='status'>
-									<span className='visually-hidden'>Loading...</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			)}
+			{show && <Alert />}
 			<div className='container'>
 				<form onSubmit={handleSubmit(addNewProp)}>
 					<div className='py-3'>

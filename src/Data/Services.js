@@ -1,10 +1,10 @@
-import service_1 from "../assets/service_1.png";
-import service_2 from "../assets/service_2.png";
-import service_3 from "../assets/service_3.png";
-import service_4 from "../assets/service_4.png";
-import service_5 from "../assets/service_5.png";
-import service_6 from "../assets/service_6.png";
-import service_7 from "../assets/service_7.png";
+import service_1 from "../assets/legal_services.jpg";
+import service_2 from "../assets/home_loan.jpg";
+import service_3 from "../assets/rent_agreement.jpg";
+import service_4 from "../assets/rental_furniture.jpg";
+import service_5 from "../assets/home_interior.jpg";
+import service_6 from "../assets/packers_movers.jpg";
+import service_7 from "../assets/vastushastra.jpg";
 
 // import service_1 from "../assets/legal_services.png";
 // import service_2 from "../assets/home_loan.png";
@@ -89,7 +89,7 @@ const ServicesData = [
 		s: {
 			icon: service_7,
 			title: "Vastu Consultation",
-			description: "",
+			description: "Expert Vastu Consultation to free your house of Vastu Dosh",
 			headingStyle: "heading-3 text-white",
 			bodyStyle: "text-white",
 			cardBodyStyle: "100px",

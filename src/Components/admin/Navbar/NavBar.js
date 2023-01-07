@@ -49,6 +49,11 @@ function NavBar() {
 								</Link>
 							</li>
 							<li className='nav-items px-2'>
+								<Link className='nav-link text-white' aria-current='page' to='/admin-details'>
+									Edit Details
+								</Link>
+							</li>
+							<li className='nav-items px-2'>
 								<Link className='nav-link text-white' aria-current='page' to='#' onClick={logout}>
 									Logout
 								</Link>

@@ -1,13 +1,13 @@
 import React from "react";
 
-import logo_hiranandani from "../../assets/logo_hiranandani.png";
+import logo_raajRealty from "../../assets/logo_raajRealty.png";
 import logo_lodha from "../../assets/logo_lodha.png";
 import logo_godrej from "../../assets/logo_godrej.png";
 import logo_rustomjee from "../../assets/logo_rustomjee.png";
 import logo_mahindra from "../../assets/logo_mahindra.jpg";
 import logo_shradha from "../../assets/logo_shraddha.png";
 import logo_ajmera from "../../assets/logo_ajmera.png";
-import logo_raheja from "../../assets/logo_k_raheja.png";
+import logo_MICL from "../../assets/logo_MICL.png";
 import "./Associates.css";
 
 const Associates = () => {
@@ -32,7 +32,7 @@ const Associates = () => {
 							top: "-170px",
 							left: "50px",
 						}}>
-						To make your Dream come true we have associated with
+						To make your Dreams come true we have associated with
 					</div>
 				</div>
 
@@ -53,7 +53,7 @@ const Associates = () => {
 						{/* <p className='heading-3' style={{ color: "#c4c4c4" }}>
 							Hiranandani <br /> Communities
 						</p> */}
-						<img src={logo_hiranandani} className='img-fluid' alt='' />
+						<img src={logo_raajRealty} className='img-fluid' alt='' />
 					</div>
 					<div className='grid-item'>
 						{/* <p className='heading-3' style={{ color: "#c4c4c4" }}>
@@ -113,7 +113,7 @@ const Associates = () => {
 						{/* <p className='heading-3' style={{ color: "#c4c4c4" }}>
 							Lorem <br /> Ipsum
 						</p> */}
-						<img src={logo_raheja} alt='' className='img-fluid' />
+						<img src={logo_MICL} alt='' className='img-fluid' />
 					</div>
 					<div
 						className='grid-item'

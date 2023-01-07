@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 
@@ -7,7 +7,7 @@ import "./login.css";
 
 import { auth } from "../../../Firebase/FBInit";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
 	const {
@@ -17,6 +17,14 @@ function Login() {
 	} = useForm();
 	const navigate = useNavigate();
 	const [errorMessage, setErrorMessage] = useState("");
+
+	useEffect(() => {
+		onAuthStateChanged(auth, (user) => {
+			if (user && user?.email) {
+				navigate("/admin-properties");
+			}
+		});
+	}, []);
 
 	const onSubmit = (data) => {
 		signInWithEmailAndPassword(auth, data.email, data.password)

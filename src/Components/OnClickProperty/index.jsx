@@ -19,8 +19,7 @@ import plug from "../../assets/plug.png";
 import washroom from "../../assets/washroom.png";
 import two_storey from "../../assets/two_storey.png";
 import water_drop from "../../assets/water_drop.png";
-
-// import carpet_area_ic from '../../assets/carpet_area_ic.png'
+import { detailsApi, propApi } from "../../axios";
 
 const OnClickProperty = () => {
 	const [singlePropertyData, setSinglePropertyData] = useState();
@@ -34,40 +33,22 @@ const OnClickProperty = () => {
 	const devBaseUrl = "https://sevensquarerealtors.up.railway.app/";
 
 	const location = useLocation();
-	const propertyId = location?.state?.id;
+	let { id, detail } = useParams();
+	// const propertyId = location?.state?.id;
 
 	//API Calls
 	useEffect(() => {
-		axios.get(`${devBaseUrl}api/property/getProperty?id=${propertyId}`).then((reponse) => {
+		propApi.get(`/getProperty?id=${id}`).then((reponse) => {
 			setSinglePropertyData(reponse?.data?.message);
 		});
-	}, [propertyId]);
-
-	console.log(singlePropertyData);
+	}, [id]);
 
 	return (
 		<>
 			<LandingPageHeader isdark={true} />
-			<div className='container container-main mt-4 d-md-flex justify-content-between align-items-start'>
-				<div className='carousel-section w-100 w-sm-75 mx-auto mx-sm-0'>
+			<div className='container container-main mt-4 d-lg-flex justify-content-between align-items-start'>
+				<div className='carousel-section w-100 w-md-75 mx-auto mx-md-0'>
 					<div id='carouselExampleIndicators' className='carousel carousel-dark slide' data-bs-ride='carousel'>
-						{/* <div className="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div className="carousel-inner" style={{maxHeight: '500px'}}>
-            <div className="carousel-item active">
-              <img src={singlePropertyData?.imgArra[0] || img3} className="d-block w-100" alt="..."/>
-            </div>
-            <div className="carousel-item">
-              <img src={singlePropertyData?.imgArra[1] || img2} className="d-block w-100" alt="..."/>
-            </div>
-            <div className="carousel-item">
-              <img src={singlePropertyData?.imgArra[2] || img1} className="d-block w-100" alt="..."/>
-            </div>
-          </div> */}
-
 						<div className='carousel-inner' style={{ maxHeight: "500px" }}>
 							<div className='carousel-item active'>
 								<img src={singlePropertyData?.mainImg} alt='' className='d-block w-100' />
@@ -97,8 +78,8 @@ const OnClickProperty = () => {
 					</div>
 				</div>
 
-				<div className='card-section mt-3 mt-sm-0'>
-					<Card data={singlePropertyData} />
+				<div className='card-section mt-3 mt-md-0'>
+					<Card data={singlePropertyData} details={detail} />
 				</div>
 			</div>
 
@@ -107,7 +88,7 @@ const OnClickProperty = () => {
 				<div className='card-container p-5' style={{ borderRadius: "0px", backgroundColor: "#e5e5e5", boxShadow: "none" }}>
 					<div className='container'>
 						<div className='row'>
-							<div className='col-sm-3 gy-3'>
+							<div className='col-md-3 gy-3'>
 								<div className='amenities d-flex justify-content-start align-items-start'>
 									<div className='ic'>
 										{" "}
@@ -122,7 +103,7 @@ const OnClickProperty = () => {
 									</div>
 								</div>
 							</div>
-							<div className='col-sm-3 gy-3'>
+							<div className='col-md-3 gy-3'>
 								<div className='amenities d-flex justify-content-start align-items-start'>
 									<div className='ic'>
 										{" "}
@@ -137,7 +118,7 @@ const OnClickProperty = () => {
 									</div>
 								</div>
 							</div>
-							<div className='col-sm-3 gy-3'>
+							<div className='col-md-3 gy-3'>
 								<div className='amenities d-flex justify-content-start align-items-start'>
 									<div className='ic'>
 										{" "}
@@ -152,7 +133,7 @@ const OnClickProperty = () => {
 									</div>
 								</div>
 							</div>
-							<div className='col-sm-3 gy-3'>
+							<div className='col-md-3 gy-3'>
 								<div className='amenities d-flex justify-content-start align-items-start'>
 									<div className='ic'>
 										{" "}
@@ -167,7 +148,7 @@ const OnClickProperty = () => {
 									</div>
 								</div>
 							</div>
-							<div className='col-sm-3 gy-3'>
+							<div className='col-md-3 gy-3'>
 								<div className='amenities d-flex justify-content-start align-items-start'>
 									<div className='ic'>
 										{" "}
@@ -182,7 +163,7 @@ const OnClickProperty = () => {
 									</div>
 								</div>
 							</div>
-							<div className='col-sm-3 gy-3'>
+							<div className='col-md-3 gy-3'>
 								<div className='amenities d-flex justify-content-start align-items-start'>
 									<div className='ic'>
 										{" "}
@@ -197,7 +178,7 @@ const OnClickProperty = () => {
 									</div>
 								</div>
 							</div>
-							<div className='col-sm-3 gy-3'>
+							<div className='col-md-3 gy-3'>
 								<div className='amenities d-flex justify-content-start align-items-start'>
 									<div className='ic'>
 										{" "}
@@ -212,13 +193,14 @@ const OnClickProperty = () => {
 									</div>
 								</div>
 							</div>
-							<div className='col-sm-3 gy-3'>
-								<div className='amenities d-flex justify-content-start align-items-start'>
-									<div className='ic'>
-										{" "}
-										<img className='me-4' src={bedrooms_ic} alt='amenities_ic' style={{ width: "24px", height: "24px" }} />{" "}
-									</div>
-									{singlePropertyData?.type === "Residential" && (
+							<div className='col-md-3 gy-3'>
+								{singlePropertyData?.type === "Residential" && (
+									<div className='amenities d-flex justify-content-start align-items-start'>
+										<div className='ic'>
+											{" "}
+											<img className='me-4' src={bedrooms_ic} alt='amenities_ic' style={{ width: "24px", height: "24px" }} />{" "}
+										</div>
+
 										<div className='text'>
 											<p className='body-2 mb-0'> Bedrooms </p>
 											<p className='body-2'>
@@ -226,37 +208,13 @@ const OnClickProperty = () => {
 												<b> {singlePropertyData?.bedrooms} BHK </b>{" "}
 											</p>
 										</div>
-									)}
-								</div>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			{/* <div className="amenities-section container mt-5">  
-        <div className="heading-2 mb-3">Features / Amenities</div>
-        <div className="card-container p-5" style={{borderRadius:'0px', backgroundColor:'#e5e5e5', boxShadow: 'none'}}>
-          <div className="container">
-            <div className="row">
-              {amenities.map( (val, index)=> {
-                return(
-                  <div className="col-sm-3 gy-3" key={index}>
-                  <div className="amenities d-flex justify-content-start align-items-start">
-                    <div className="ic"> <img className='me-4' src={val.ic} alt="amenities_ic" style={{width:'24px', height:'24px'}}/> </div>
-                    <div className="text">
-                      <p className="body-2 mb-0">{val.title}</p>
-                      <p className="body-2"> <b> {val.Value} </b> </p>
-                    </div>
-                  </div>
-                </div>
-                )
-              } )}
-            </div>
-          </div>
-        </div>
-
-      </div> */}
-
 			<Footer />
 		</>
 	);

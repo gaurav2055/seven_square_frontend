@@ -34,7 +34,7 @@ const Services = (props) => {
 						</div>
 						<div className='content px-4' style={{ position: "absolute", bottom: "30px" }}>
 							<div className='heading-2 #000 heading-2'>Services</div>
-							<div className='body-2 #000 w-50'>All the wide and exciting range of services we provide</div>
+							<div className='body-2 #000 w-50'>All the wide and exciting range of services by professional we provide</div>
 						</div>
 					</div>
 					{ServicesData.map((value, index) => {
@@ -59,7 +59,7 @@ const Services = (props) => {
 						<div className='card text-left' style={{ border: "none" }}>
 							<div className='card-body pt-0'>
 								<p className='mb-0 heading-2 #000'>Services</p>
-								<p className='card-text body-2 #000'>All the wide and exciting range of services we provide</p>
+								<p className='card-text body-2 #000'>All the wide and exciting range of services by professional we provide</p>
 							</div>
 						</div>
 					</div>

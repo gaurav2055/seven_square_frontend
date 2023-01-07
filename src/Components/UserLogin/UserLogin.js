@@ -19,7 +19,7 @@ const UserLogin = () => {
 				size: "invisible",
 				callback: (response) => {
 					// reCAPTCHA solved, allow signInWithPhoneNumber.
-					console.log("captcha Resolved");
+					// console.log("captcha Resolved");
 					// userAuth();
 				},
 			},
@@ -30,7 +30,7 @@ const UserLogin = () => {
 	const userAuth = (data) => {
 		setUpRecaptcha();
 		const phoneNo = "+91" + data.phoneNo;
-		console.log(phoneNo);
+		// console.log(phoneNo);
 		let appVerifier = window.recaptchaVerifier;
 		setPersistence(auth, browserSessionPersistence)
 			.then(() => {
@@ -42,7 +42,7 @@ const UserLogin = () => {
 			})
 			.catch((error) => {
 				// Handle Errors here.
-				console.log(error.message);
+				// console.log(error.message);
 			});
 	};
 
@@ -51,7 +51,7 @@ const UserLogin = () => {
 		const optConfirm = window.confirmationResult;
 		optConfirm.confirm(code).then((result) => {
 			// let user = result.user;
-			console.log("user Signed in");
+			// console.log("user Signed in");
 			navigate("/property-details");
 		});
 	};

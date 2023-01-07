@@ -1,14 +1,18 @@
 import axios from "axios";
 
 const propApi = axios.create({
-	baseURL: "https://sevensquarerealtors.up.railway.app/api/property",
+	baseURL: "https://asia-south1-square-realtors.cloudfunctions.net/app/api/property",
 });
 
 const userApi = axios.create({
-	baseURL: "https://sevensquarerealtors.up.railway.app/api/user",
+	baseURL: "https://asia-south1-square-realtors.cloudfunctions.net/app/api/user",
 });
 
 const testApi = axios.create({
-	baseURL: "https://sevensquarerealtors.up.railway.app/api/testimonial",
+	baseURL: "https://asia-south1-square-realtors.cloudfunctions.net/app/api/testimonial",
 });
-export { propApi, userApi, testApi };
+
+const detailsApi = axios.create({
+	baseURL: "https://asia-south1-square-realtors.cloudfunctions.net/app/api/details",
+});
+export { propApi, userApi, testApi, detailsApi };

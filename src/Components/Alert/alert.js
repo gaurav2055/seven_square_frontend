@@ -3,7 +3,7 @@ import React from "react";
 function Alert() {
 	return (
 		<>
-			<div className='modal' data-bs-backdrop='static'>
+			<div className='modal' data-bs-backdrop='static' style={{ zIndex: "1060" }}>
 				<div className='modal-dialog modal-dialog-centered'>
 					<div className='modal-content no-border' style={{ backgroundColor: "transparent" }}>
 						<div className='d-flex justify-content-center'>

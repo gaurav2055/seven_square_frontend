@@ -13,32 +13,45 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../Firebase/FBInit";
 import LoginModal from "../LoginModal/LoginModal";
 import Alert from "../Alert/alert";
-import { getFiltredProperties } from "../../ApiEndpoints";
+import { getAllProperties, getFiltredProperties } from "../../ApiEndpoints";
+import { detailsApi, propApi } from "../../axios";
 
 const PropertyListingPage = () => {
-	const [propertyTypeAction, setPropertyTypeAction] = useState("");
-	const [propertyType, setPropertyType] = useState("");
 	const [propertiesData, setPropertiesData] = useState([]);
 	const [showModal, setShowModal] = useState(false);
 	const [loader, setLoader] = useState(false);
 	const navigate = useNavigate();
+	const [details, setDetails] = useState({});
+
+	useEffect(() => {
+		const setData = async () => {
+			try {
+				const response = await detailsApi.get("/getDetails");
+				setDetails(response.data.message);
+			} catch (error) {}
+		};
+		setData();
+	}, []);
 
 	const localBaseUrl = "http:/localhost:8080/";
 	const devBaseUrl = "https://sevensquarerealtors.up.railway.app/";
 
 	useEffect(() => {
-		setLoader(true);
-		axios.get(`${devBaseUrl}api/property/getPlpProperties`).then((response) => {
+		const getProperties = async () => {
+			setLoader(true);
+			const response = await propApi.get("/getProperties");
 			setPropertiesData(response.data.message);
 			setLoader(false);
-		});
+		};
+		getProperties();
 	}, []);
 
 	const OnClickPropertyHandler = (propertyId) => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
-				console.log(user);
-				navigate(`/property-details`, { state: { id: propertyId } });
+				console.log(user?.email);
+				console.log(user?.phoneNumber);
+				navigate(`/property-details/${propertyId}/${details.phoneNo}`);
 			} else {
 				setShowModal(true);
 			}
@@ -47,9 +60,9 @@ const PropertyListingPage = () => {
 
 	const handleType = async (e, type) => {
 		setLoader(true);
-		const response = await getFiltredProperties(e.target.value, type);
-		console.log("handleType", response);
-		setPropertiesData(response);
+		const response = await propApi.get(`/getPropertiesByType?propertyActionType=${e.target.value}&type=${type}`);
+		// console.log("handleType", response);
+		setPropertiesData(response.data.message);
 		setLoader(false);
 	};
 
@@ -59,9 +72,14 @@ const PropertyListingPage = () => {
 			{loader && <Alert />}
 			{showModal && <LoginModal setState={setShowModal} />}
 			<div className='headings container mt-4'>
-				<p className='heading-1'>Your Dream Property</p>
+				<p
+					className='heading-1'
+					// style={{ color: "#ff0000" }}
+				>
+					{details.detail13 || "Your Dream Property"}
+				</p>
 				<p className='body-1' style={{ fontWeight: "500" }}>
-					Your not buying a home, your buying a lifestyle. To buy a nice home is to choose a better way of life.
+					{details.detail14 || "Your not buying a home, your buying a lifestyle. To buy a nice home is to choose a better way of life."}
 				</p>
 			</div>
 
@@ -154,6 +172,8 @@ const PropertyListingPage = () => {
 			<div className='container mt-4'>
 				<div className='masonry'>
 					{propertiesData.map((val, index) => {
+						let desc = String(val.About).substring(0, String(val.About).indexOf("\n") > 0 ? String(val.About).indexOf("\n") : 70);
+						console.log(desc, "===>", val.title, "index ==>", String(val.About).indexOf("\n"));
 						return (
 							<div className='img-card mb-3' onClick={() => OnClickPropertyHandler(val.id)} key={index} style={{ minHeight: "10rem" }}>
 								<img src={val.mainImg} alt='propertyImg' />
@@ -161,7 +181,8 @@ const PropertyListingPage = () => {
 									<p className='heading-3 px-4 pt-3 mb-0'> {val.carpetArea} sqft.</p>
 									<p className='property body-2  px-4' style={{ maxWidth: "10" }}>
 										{" "}
-										{String(val.About).substring(0, 200)}{" "}
+										{/* {String(val.About).substring(0, 200)}{" "} */}
+										{desc}
 									</p>
 								</div>
 							</div>

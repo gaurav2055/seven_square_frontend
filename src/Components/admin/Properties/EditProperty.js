@@ -6,10 +6,12 @@ import "./EditProperty.css";
 import { propApi } from "../../../axios";
 
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
-import { storage } from "../../../Firebase/FBInit";
-import { useLocation } from "react-router-dom";
+import { auth, storage } from "../../../Firebase/FBInit";
+import { useLocation, useNavigate } from "react-router-dom";
+import Alert from "../../Alert/alert";
+import { onAuthStateChanged } from "firebase/auth";
 
-function EditProperty(props) {
+function EditProperty() {
 	const {
 		register,
 		handleSubmit,
@@ -17,6 +19,7 @@ function EditProperty(props) {
 		getValues,
 		resetField,
 		setValue,
+		reset,
 	} = useForm();
 
 	const [show, setShow] = useState(false);
@@ -26,53 +29,52 @@ function EditProperty(props) {
 	const [imgRef, setImgRef] = useState([]);
 	const [mImgVal, setMImgVal] = useState(false);
 	const [imgVal, setImgVal] = useState(false);
+	const [loader, setLoader] = useState(false);
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const setData = async () => {
-			if (location.state) {
-				console.log(location.state);
-				try {
-					const response = await propApi.get(`/getProperty?id=${location.state}`);
-					console.log(response.data.message);
-					setValue("propertyActionType", response.data.message.propertyActionType);
-					setValue("type", response.data.message.type);
-					setValue("display", response.data.message.display);
-					setValue("feature", response.data.message.feature);
-					setValue("title", response.data.message.title);
-					setValue("address", response.data.message.address);
-					setValue("About", response.data.message.About);
-					setValue("price", response.data.message.price);
-					setValue("carpetArea", response.data.message.carpetArea);
-					setValue("Story", response.data.message.Story);
-					setValue("washroom", response.data.message.washroom);
-					setValue("bedrooms", response.data.message.bedrooms);
-					setValue("parkingArea", response.data.message.parkingArea);
-					setValue("Furnished", response.data.message.Furnished);
-					setValue("water", response.data.message.water);
-					setValue("electricity", response.data.message.electricity);
-					setUrl(response.data.message.mainImg);
-					setMainImgRef(response.data.message.mainImgRef);
-					setUrlArray(response.data.message.imgArra);
-					setImgRef(response.data.message.ImgRef);
-				} catch (error) {
-					console.log(error);
+			setLoader(true);
+			onAuthStateChanged(auth, async (user) => {
+				if (user && user?.email) {
+					if (location.state) {
+						// console.log(location.state);
+						try {
+							const response = await propApi.get(`/getProperty?id=${location.state}`);
+							// console.log(response.data.message);
+							reset(response.data.message);
+							setUrl(response.data.message.mainImg);
+							setMainImgRef(response.data.message.mainImgRef);
+							setUrlArray(response.data.message.imgArra);
+							setImgRef(response.data.message.ImgRef);
+						} catch (error) {
+							// console.log(error);
+						}
+					}
+				} else {
+					// console.log("no user");
+					navigate("/admin");
 				}
-			}
+			});
+			setLoader(false);
 		};
 		setData();
-		console.log();
+		// console.log();
 	}, []);
 
 	useEffect(() => {
 		if (urlArray.length === 0) {
 			setImgVal(true);
+		} else {
+			setImgVal(false);
 		}
 	}, [urlArray]);
 
 	const upload = (refer) => {
 		// event.preventDefault();
-		console.log(getValues(refer));
+		setLoader(true);
+		// console.log(getValues(refer));
 		var propImg = getValues(refer);
 		propImg = Object.values(propImg);
 		// propImg.forEach((img) => {
@@ -88,19 +90,19 @@ function EditProperty(props) {
 				"state_changed",
 				(snapshot) => {
 					const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-					console.log(progress);
-					console.log(typeof progress);
+					// console.log(progress);
+					// console.log(typeof progress);
 					if (progress === 100) {
 						setShow(false);
 					}
 				},
 				(error) => {
-					console.log(error.code);
+					// console.log(error.code);
 					setShow(false);
 				},
 				() => {
 					getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-						console.log("File available at", downloadURL);
+						// console.log("File available at", downloadURL);
 						if (refer === "mImages") {
 							if (downloadURL !== url) {
 								await deleteMImg();
@@ -113,9 +115,9 @@ function EditProperty(props) {
 								};
 								try {
 									let response = await propApi.put(`/updateProperty?id=${location.state}`, data);
-									console.log(response.data.message);
+									// console.log(response.data.message);
 								} catch (error) {
-									console.log(error.response.data.message);
+									// console.log(error.response.data.message);
 								}
 							}
 						} else {
@@ -126,25 +128,28 @@ function EditProperty(props) {
 					});
 				}
 			);
+			setLoader(false);
 			resetField(refer);
-			console.log(typeof urlArray);
+			// console.log(typeof urlArray);
 		}
 	};
 	const editProp = async (data) => {
+		setLoader(true);
 		data.imgArra = urlArray;
 		data.mainImg = url;
 		data.mainImgRef = mainImgRef;
 		data.ImgRef = imgRef;
 		delete data.mImages;
 		delete data.images;
-		console.log(data);
+		// console.log(data);
 		try {
 			const response = await propApi.put(`/updateProperty?id=${encodeURI(location.state)}`, data);
-			console.log(response);
+			// console.log(response);
 			alert("property edited");
 			window.location.reload();
 		} catch (error) {
-			console.log(error.message);
+			// console.log(error.message);
+			setLoader(false);
 			alert(error.response.data.message);
 		}
 	};
@@ -153,10 +158,10 @@ function EditProperty(props) {
 		const deleteRef = ref(storage, mainImgRef);
 		deleteObject(deleteRef)
 			.then(() => {
-				console.log("image was deleted");
+				// console.log("image was deleted");
 			})
 			.catch((error) => {
-				console.log(error.message);
+				// console.log(error.message);
 			});
 	};
 
@@ -164,15 +169,16 @@ function EditProperty(props) {
 		if (urlArray.length === 1) {
 			return alert("this is the last image and cannot be delete. Atleast one image required");
 		}
+		setLoader(true);
 		const deleteRef = ref(storage, reff);
 		deleteObject(deleteRef).then(() => {
-			console.log("image was deleted");
-			console.log(reff);
-			console.log(url);
+			// console.log("image was deleted");
+			// console.log(reff);
+			// console.log(url);
 			setUrlArray([...urlArray.filter((arr) => arr !== url)]);
 			setImgRef([...imgRef.filter((arr) => arr !== reff)]);
 			updateAfter([...urlArray.filter((arr) => arr !== url)], [...imgRef.filter((arr) => arr !== reff)]).then((res) => {
-				console.log(res);
+				// console.log(res);
 			});
 		});
 	};
@@ -182,13 +188,14 @@ function EditProperty(props) {
 			imgArra: urlArr,
 			ImgRef: reffArr,
 		};
-		console.log(data);
+		// console.log(data);
 		try {
 			const response = await propApi.put(`/updateProperty?id=${location.state}`, data);
-			console.log(response);
+			// console.log(response);
+			setLoader(false);
 			return "property edited";
 		} catch (error) {
-			console.log(error.message);
+			// console.log(error.message);
 			return error.response.data.message;
 		}
 	};
@@ -196,6 +203,7 @@ function EditProperty(props) {
 	return (
 		<>
 			<NavBar />
+			{loader && <Alert />}
 			<div className=' headings container mt-5'>
 				<h1>Edit Property</h1>
 				<h5 className='text-muted' style={{ fontWeight: "normal" }}>

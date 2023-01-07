@@ -22,31 +22,36 @@ const LandingPageHeader = (props) => {
 		<>
 			{showModal && <LoginModal setState={setShowModal} />}
 
-			<nav className='navbar navbar-expand-lg px-sm-5 py-4' style={{ backgroundColor: isdark ? "#000" : "" }}>
+			<nav
+				className={"navbar navbar-expand-lg px-sm-5 fixed-top bg-light"}
+				style={{
+					boxShadow: "0px 5px 10px",
+				}}>
 				<div className='container-fluid'>
 					<a className='navbar-brand me-0 ms-sm-5' href='/'>
-						<img className='w-100' src={seven_square_logo} alt='logo' />
+						<img className='h-75' src={seven_square_logo} alt='logo' />
 						{/* <Logo /> */}
 					</a>
 					<button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
 						{/* <span className='navbar-toggler' style={{focus: "outline: 1px none"}}> */}
-						<img className='btn-sm' src={harmburger} alt='harmburger_ic' />
+						{/* <img className='btn-sm' src={harmburger} alt='harmburger_ic' /> */}
 						{/* </span> */}
+						<span className='navbar-toggler-icon'></span>
 					</button>
 					<div className='collapse navbar-collapse' id='navbarNav'>
 						<ul className='navbar-nav ms-auto me-sm-5'>
 							<li className='nav-item px-3'>
-								<Link className='nav-link text-white' aria-current='page' to='/'>
+								<Link className='nav-link text-danger' aria-current='page' to='/'>
 									Home
 								</Link>
 							</li>
 							<li className='nav-item px-3'>
-								<Link className='nav-link text-white' to='/properties'>
+								<Link className='nav-link text-danger' to='/properties'>
 									Properties
 								</Link>
 							</li>
 							<li className='nav-item px-3'>
-								<button onClick={handelLogin} className='nav-link text-white' style={{ background: "none", border: "none" }}>
+								<button onClick={handelLogin} className='nav-link text-danger' style={{ background: "none", border: "none" }}>
 									Buy/Rent | Sell/List Property
 								</button>
 							</li>
