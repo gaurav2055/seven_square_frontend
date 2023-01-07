@@ -49,7 +49,7 @@ const LoginModal = (props) => {
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
 			if (user && !user?.email) {
-				console.log(user.phoneNumber.substring(3));
+				// console.log(user.phoneNumber.substring(3));
 				window.phoneNo = user.phoneNumber.substring(3);
 				setUser(true);
 			} else {
@@ -65,13 +65,13 @@ const LoginModal = (props) => {
 				const PNo = window.phoneNo;
 				const data = { phoneNo: PNo };
 				try {
-					console.log(user);
+					// console.log(user);
 					const res = await userApi.get(`/getSingleUser?phoneNo=${PNo}`, data);
-					console.log(res.data.message, "res");
+					// console.log(res.data.message, "res");
 					reset(res.data.message);
 				} catch (error) {}
 			} else {
-				console.log(false);
+				// console.log(false);
 			}
 		};
 		getUser();
@@ -103,7 +103,7 @@ const LoginModal = (props) => {
 					// console.log("error here");
 					// console.log(error.message);
 					setLoader(false);
-					alert(error.message);
+					setAlert(error.message);
 				});
 		}
 	}, [recaptcha]);
@@ -162,7 +162,7 @@ const LoginModal = (props) => {
 						// console.log("error here");
 						// console.log(error.message);
 						setLoader(false);
-						alert(error.message);
+						setAlert(error.message);
 					});
 			})
 			.catch((error) => {
@@ -170,7 +170,7 @@ const LoginModal = (props) => {
 				// console.log("error here");
 				// console.log(error.message);
 				setLoader(false);
-				alert(error.message);
+				setAlert(error.message);
 			});
 
 		setLoader(false);
@@ -226,7 +226,9 @@ const LoginModal = (props) => {
 									{alertMsg}
 								</div>
 							)}
-							<p className='body-1'>{detail.detail15 || "First Step Towards Your dream journey."}</p>
+							<p className='body-1' style={{ color: "#fe2c33" }}>
+								{detail.detail15 || "First Step Towards Your dream journey."}
+							</p>
 							<div id='recaptcha-container'></div>
 							{login && (
 								<form onSubmit={handleSubmit(user ? onSubmit2 : onSubmit)}>
@@ -257,21 +259,9 @@ const LoginModal = (props) => {
 												</label>
 												{errors.phoneNo && <p className='validation'>{errors.phoneNo.message}</p>}
 											</div>
-											<div className='col-12'>
-												<span id='numberHelpInline' className='form-text'>
-													Enter Your Address.
-												</span>
-											</div>
-											<div className='col-12 form-floating'>
-												<textarea id='inputAddress' className='form-control' placeholder='Address' {...register("address", { required: "Your Address is required" })} />
-												<label htmlFor='inputAddress' className='col-form-label floatingInput mx-2'>
-													Address
-												</label>
-												{errors.address && <p className='validation'>{errors.address.message}</p>}
-											</div>
 											<div className='col-6 mt-3'>
 												<div className='dropdown ps-0'>
-													<select className='form-select' {...register("intention", { required: "This field is required" })}>
+													<select className='form-select' {...register("intention")}>
 														<option value='' selected disabled>
 															Choose your Preference
 														</option>
@@ -304,7 +294,8 @@ const LoginModal = (props) => {
 															reset();
 															setTimeout(() => {
 																setAlert(false);
-															}, 4000);
+																setState(false);
+															}, 2000);
 															// Sign-out successful.
 														})
 														.catch((error) => {
@@ -319,33 +310,37 @@ const LoginModal = (props) => {
 							)}
 							{otp && (
 								<form onSubmit={handleSubmit2(onSubmitOtp)}>
-									<div className='col md'>
-										<div className='form-floating mb-2'>
-											<input type='text' className='form-control' {...register2("otp", { register: true })} placeholder='Enter Otp' />
-											<label htmlFor='otp'>Otp</label>
+									<div className='row g-0'>
+										<div className='col-7  mb-2'>
+											<div className='form-floating'>
+												<input type='text' className='form-control' {...register2("otp", { register: true })} placeholder='Enter Otp' />
+												<label htmlFor='otp'>Otp</label>
+											</div>
+										</div>
+										<div
+											className='btn btn-link btn-lg col-4 px-0'
+											onClick={() => {
+												if (counter === 0) {
+													onSubmit(userData);
+												}
+											}}>
+											<p>Resend otp {counter !== 0 && "in ..00:" + `${counter > 9 ? counter : "0" + counter}`}</p>
 										</div>
 									</div>
-									<div
-										className='btn btn-link btn-sm my-3 me-2 px-4'
-										onClick={() => {
-											if (counter === 0) {
-												onSubmit(userData);
-											}
-										}}>
-										Resend otp {counter !== 0 && <p>{"in ..00:" + counter > 9 ? counter : "0" + counter}</p>}
-									</div>
-									<div
-										className='btn btn-primary btn-sm my-3 px-4'
-										onClick={() => {
-											setOtp(false);
-											setLogin(true);
-										}}>
-										Change Details
-									</div>
-									<div className='col md'>
-										<div className='form-floating mb-2'>
-											<button type='submit' className='btn btn-primary mb-3'>
-												Submit otp and View Properties
+									<div className='row my-3 g-0'>
+										<div className='col-5'>
+											<div
+												className='btn btn-primary'
+												onClick={() => {
+													setOtp(false);
+													setLogin(true);
+												}}>
+												Change Details
+											</div>
+										</div>
+										<div className='col-7'>
+											<button type='submit' className='btn btn-primary px-2'>
+												Submit otp & View Properties
 											</button>
 										</div>
 									</div>

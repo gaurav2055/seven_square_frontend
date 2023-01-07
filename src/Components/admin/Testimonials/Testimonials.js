@@ -99,8 +99,6 @@ function Testimonials() {
 						{errors.name && <p className='validation'>{errors.name.message}</p>}
 						<textarea type='text' className='form-control my-3' placeholder='Review' {...register("testimonial", { required: "Required" })} />
 						{errors.testimonial && <p className='validation'>{errors.testimonial.message}</p>}
-						<input type='number' className='form-control my-3' max={5} placeholder='Rating' {...register("rating", { required: "Required" })} />
-						{errors.rating && <p className='validation'>{errors.rating.message}</p>}
 						<button className='btn btn-primary'>Submit</button>
 					</form>
 				</div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import CommonHeader from "../Header/CommonHeader";
 import Card from "./Card";
+import Carousel from "react-bootstrap/Carousel";
 
 import "./index.css";
 import Footer from "../Footer/Footer";
@@ -23,6 +23,11 @@ import { detailsApi, propApi } from "../../axios";
 
 const OnClickProperty = () => {
 	const [singlePropertyData, setSinglePropertyData] = useState();
+	const [index, setIndex] = useState(0);
+
+	const handleSelect = (selectedIndex, e) => {
+		setIndex(selectedIndex);
+	};
 
 	const img1 = "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80";
 	const img2 = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1400&q=80";
@@ -46,38 +51,19 @@ const OnClickProperty = () => {
 	return (
 		<>
 			<LandingPageHeader isdark={true} />
-			<div className='container container-main mt-4 d-lg-flex justify-content-between align-items-start'>
-				<div className='carousel-section w-100 w-md-75 mx-auto mx-md-0'>
-					<div id='carouselExampleIndicators' className='carousel carousel-dark slide' data-bs-ride='carousel'>
-						<div className='carousel-inner' style={{ maxHeight: "500px" }}>
-							<div className='carousel-item active'>
-								<img src={singlePropertyData?.mainImg} alt='' className='d-block w-100' />
-							</div>
-							{singlePropertyData?.imgArra.map((img, index) => {
-								return (
-									<div className='carousel-item' key={index}>
-										<img src={img} className='d-block w-100' alt='...' />
-									</div>
-								);
-							})}
-						</div>
-						<div className='carousel-indicators'>
-							<button type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to='0' className='active' aria-current='true' aria-label='Slide 1'></button>
-							{singlePropertyData?.imgArra.map((img, index) => {
-								return <button type='button' key={index} data-bs-target='#carouselExampleIndicators' data-bs-slide-to={index + 1} aria-label={"Slide" + index + 2}></button>;
-							})}
-						</div>
-						<button className='carousel-control-prev' type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='prev'>
-							<span className='carousel-control-prev-icon' aria-hidden='true'></span>
-							<span className='visually-hidden'>Previous</span>
-						</button>
-						<button className='carousel-control-next' type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='next'>
-							<span className='carousel-control-next-icon' aria-hidden='true'></span>
-							<span className='visually-hidden'>Next</span>
-						</button>
-					</div>
-				</div>
-
+			<div className='container container-main mt-5 pt-4 d-lg-flex justify-content-between align-items-start'>
+				<Carousel variant='dark' className='w-100 w-md-75 mx-auto mx-md-0'>
+					<Carousel.Item>
+						<img src={singlePropertyData?.mainImg} alt='' className='d-block w-100' />
+					</Carousel.Item>
+					{singlePropertyData?.imgArra.map((img, index) => {
+						return (
+							<Carousel.Item key={index}>
+								<img src={img} className='d-block w-100' alt='...' />
+							</Carousel.Item>
+						);
+					})}
+				</Carousel>
 				<div className='card-section mt-3 mt-md-0'>
 					<Card data={singlePropertyData} details={detail} />
 				</div>

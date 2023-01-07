@@ -28,8 +28,8 @@ const ServicesData = [
 	{
 		s: {
 			icon: service_1,
-			title: "Legal Services",
-			description: "Legal Services for Real Estate",
+			title: "Legal",
+			description: "Cost-Efficient  legal assistance in real estate related matters.",
 			headingStyle: "heading-3 text-white",
 			bodyStyle: "text-white",
 			cardBodyStyle: "100px",
@@ -39,7 +39,7 @@ const ServicesData = [
 		s: {
 			icon: service_2,
 			title: "Home Loan",
-			description: "Make your dream home a reality with our leading home loan services.",
+			description: "Attractive Interest Rates with maximum loan eligibility.",
 			headingStyle: "heading-3 text-white",
 			bodyStyle: "text-white",
 			cardBodyStyle: "100px",
@@ -49,7 +49,7 @@ const ServicesData = [
 		s: {
 			icon: service_3,
 			title: "Rent Agreement",
-			description: "Help you with all your Rent Agreement Documentation",
+			description: "Online agreement & Documentation services at your door steps.",
 			headingStyle: "heading-3 text-white",
 			bodyStyle: "text-white",
 			cardBodyStyle: "100px",
@@ -59,7 +59,7 @@ const ServicesData = [
 		s: {
 			icon: service_4,
 			title: "Rental Furniture",
-			description: "Some quick example text to build on the card title",
+			description: "Rent premium furniture and appliances of your choice from wide ranges",
 			headingStyle: "heading-3 text-white",
 			bodyStyle: "text-white",
 			cardBodyStyle: "100px",
@@ -69,7 +69,7 @@ const ServicesData = [
 		s: {
 			icon: service_5,
 			title: "Home Interior",
-			description: "Some quick example text to build on the card title",
+			description: "Extraordinary designs, exceptional  service, lowest Prices & timely Delivery Assurance",
 			headingStyle: "heading-3 text-white",
 			bodyStyle: "text-white",
 			cardBodyStyle: "100px",
@@ -79,7 +79,7 @@ const ServicesData = [
 		s: {
 			icon: service_6,
 			title: "Packers & Movers",
-			description: "Service to pack and move your luggage from your old home to your dream home",
+			description: "Quality,Quick & Safe  Door-to-door shifting solutions",
 			headingStyle: "heading-3 text-white",
 			bodyStyle: "text-white",
 			cardBodyStyle: "100px",
@@ -89,7 +89,7 @@ const ServicesData = [
 		s: {
 			icon: service_7,
 			title: "Vastu Consultation",
-			description: "Expert Vastu Consultation to free your house of Vastu Dosh",
+			description: "Get effective vastu guidance and advice from experienced consultants.",
 			headingStyle: "heading-3 text-white",
 			bodyStyle: "text-white",
 			cardBodyStyle: "100px",

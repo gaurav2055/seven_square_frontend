@@ -35,25 +35,28 @@ const Hero = (props) => {
 								</div>
 
 								<div className='hero-heading container'>
-									<p className='heading-1 m-0' style={{ color: "rgb(255,0,0)" }}>
-										<span>{details.detail1 || "7Square Realtors"}</span>
+									<p className='heading-1 m-0'>
+										<span style={{ color: "#1f26d2" }}>{details.detail1 || "7SQUARE REALTORS"}</span>
 										{/* <img src={seven_square_logo} alt="" /> */}
 										<br className='responsive' />
-										<span className='heading-2'> {details.detail2 || "Squaring deals into relationship"}</span>
+										<span style={{ color: "red" }} className='heading-1'>
+											{" "}
+											{details.detail2 || "Squaring deals into relationship"}
+										</span>
 									</p>
 								</div>
 							</div>
 
 							<div className='hero-content container mb-4'>
 								<div className='py-3 ms-md-5'>
-									<p className='body-1 my-1' style={{ maxWidth: "25rem", color: "rgb(255,0,0)" }}>
+									<p className='heading-3 my-1' style={{ maxWidth: "25rem", color: "#1f26d2" }}>
 										{/* Suspendisse condimentum massa nec lacus congue rutrum.
 										<br className='responsive' /> Praesent eros magna, fermentum ac feugiat at, molestie quis <br className='responsive' /> ipsum. Mauris facilisis gravida diam vestibulum dignissim. */}
 										{details.detail3}
 									</p>
 								</div>
 								<div className='heroCta ms-sm-5'>
-									<button type='button' className='heroCtaBtn btn btn-outline-danger' onClick={HandelExploreBtn}>
+									<button type='button' className='heroCtaBtn btn exp-btn' onClick={HandelExploreBtn}>
 										Explore
 									</button>
 								</div>
@@ -72,8 +75,10 @@ const Hero = (props) => {
 									</div>
 								</div>
 								<div className='feature1-content w-75 text-white' onClick={HandelExploreBtn}>
-									<div className='feature1-heading heading-3 text-primary'>Buy Property</div>
-									<div className='feature1-content body-2 text-primary'>{details.detail4 || "Buy the property you always dreamt of buying. We show both Residential and Commercial Properties"}</div>
+									<div className='feature1-heading heading-3 text-blue'>Buy Property</div>
+									<div className='feature1-content body-2 text-blue' style={{ fontWeight: "bold" }}>
+										{details.detail4 || "Buy the property you always dreamt of buying. We show both Residential and Commercial Properties"}
+									</div>
 								</div>
 							</div>
 							<div className='feature-2 d-flex justify-content-center align-items-start mt-3 ms-3'>
@@ -81,7 +86,7 @@ const Hero = (props) => {
 									<div className='feature2-heading heading-3 ' style={{ color: "rgb(255,0,0)" }}>
 										Rent Property
 									</div>
-									<div className='feature2-content body-2 text-start ' style={{ color: "rgb(255,0,0)" }}>
+									<div className='feature2-content body-2 text-start ' style={{ color: "rgb(255,0,0)", fontWeight: "bold" }}>
 										{details.detail5 || "Rent amazing properties at great affordable prices. Both Residential and commercial are available "}
 									</div>
 								</div>
@@ -106,8 +111,10 @@ const Hero = (props) => {
 									</div>
 								</div>
 								<div className='feature3-content w-75 text-white' onClick={sell}>
-									<div className='feature3-heading heading-3 text-primary'>Sell Property</div>
-									<div className='feature3-content body-2 text-primary'>{details.detail6 || "Sell your properties at great and amazing prices. We sell both Residential and Commercial properties."}</div>
+									<div className='feature3-heading heading-3 text-blue'>Sell Property</div>
+									<div className='feature3-content body-2 text-blue' style={{ fontWeight: "bold" }}>
+										{details.detail6 || "Sell your properties at great and amazing prices. We sell both Residential and Commercial properties."}
+									</div>
 								</div>
 							</div>
 							<div className='feature-4 d-flex justify-content-center align-items-start mt-3 ms-3'>
@@ -115,7 +122,7 @@ const Hero = (props) => {
 									<div className='feature4-heading heading-3 ' style={{ color: "rgb(255,0,0)" }}>
 										Rent out your Property
 									</div>
-									<div className='feature4-content body-2 text-end ' style={{ color: "rgb(255,0,0)" }}>
+									<div className='feature4-content body-2 text-end ' style={{ color: "rgb(255,0,0)", fontWeight: "bold" }}>
 										{details.detail7 || "Rent out your property without any worries. We will find great tennants for you."}
 									</div>
 								</div>

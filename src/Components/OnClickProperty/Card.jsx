@@ -15,7 +15,14 @@ const Card = (props) => {
 	return (
 		<>
 			<div className='card-container p-4 ms-md-5' style={{ maxWidth: "600px", maxHeight: "800px" }}>
-				<span className='badge bg-primary mb-2 heading-3'>{props?.data?.propertyActionType || "Buy"}</span>
+				{props?.data?.propertyActionType === "Buy" || props?.data?.propertyActionType === "Rent" ? (
+					<span className='badge bg-primary mb-2 heading-3'>{props?.data?.propertyActionType || "Buy"}</span>
+				) : (
+					<>
+						<span className='badge bg-primary mb-2 heading-3'>{props?.data?.propertyActionType?.match(/[A-Z][a-z]+/g)[0] || "Buy"}</span>
+						<span className='badge bg-danger ms-2 mb-2 heading-3'>New</span>
+					</>
+				)}
 				<p className='heading-2'>{props?.data?.title || "Hill Crest,16th Road, Bandra West"}</p>
 				<p className='body-2'>{props?.data?.address || "16th Road (Bandra, Maharashtra, IN - 400050)"}</p>
 
@@ -37,7 +44,7 @@ const Card = (props) => {
 				<div className=' container name-price-tag d-flex justify-content-between align-items-start mt-4'>
 					<div className='price-tag'>
 						<p className='mb-0'>Starting at</p>
-						<p className='heading-3'>{props?.data?.price || "₹ 72.2 L"}</p>
+						<p className='heading-3'>₹ {props?.data?.price || "72.2 L"}</p>
 					</div>
 					<div className='name-tag'>
 						<p className='mb-0 body-2'>Naven Khara</p>

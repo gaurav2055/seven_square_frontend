@@ -41,7 +41,7 @@ function AddProperty() {
 
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
-			console.log(!user.email);
+			// console.log(!user.email);
 			if (!user?.email) {
 				navigate("/admin");
 			}
@@ -141,6 +141,8 @@ function AddProperty() {
 									<select className='form-select my-2' {...register("propertyActionType")}>
 										<option defaultValue='Buy'>Buy</option>
 										<option value='Rent'>Rent</option>
+										<option value='BuyNew'>Buy New Project</option>
+										<option value='RentNew'>Rent New Project</option>
 									</select>
 								</div>
 								<div className='col-sm'>

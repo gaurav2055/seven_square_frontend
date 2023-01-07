@@ -15,6 +15,7 @@ let settings = {
 	slidesToShow: 1,
 	slidesToScroll: 1,
 	arrows: true,
+	adaptiveHeight: true,
 };
 
 const FeaturedProperties = (props) => {
@@ -36,7 +37,7 @@ const FeaturedProperties = (props) => {
 	const OnClickPropertyHandler = (propertyId) => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
-				console.log(user?.email);
+				// console.log(user?.email);
 				navigate(`/property-details/${propertyId}/${details.phoneNo}`);
 			} else {
 				setShowModal(true);
@@ -53,18 +54,22 @@ const FeaturedProperties = (props) => {
 					backgroundColor: "#e5e5e5",
 				}}>
 				<div className='feature_properties_main container d-md-flex justify-content-between align-items-center py-5'>
-					<div className='fp_header_left container'>
+					<div className='fp_header_left container me-5'>
 						<div className='card-body'>
 							<p className='card-title heading-2'>Feature Properties</p>
-							<p className='card-text'>{details.detail11 || "massa nisi. Aliquam quis ante ultricies arcu tincidunt bibendum ac sed enim. Sed ultrices et arcu quis sollicitudin. nisi."}</p>
+							<p className='card-text body-1' style={{ color: "#1f26d2", fontWeight: "600" }}>
+								{details.detail11 || "We help you to get the perfect lifestyle!"}
+							</p>
 						</div>
 						<hr />
 						<div className='card-body'>
-							<p className='card-text'>{details.detail12 || "Naven Khara massa nisi. Aliquam quis ante ultricies arcu tincidunt bibendum ac sed enim. Sed ultrices et arcu quis sollicitudin."}</p>
+							<p className='card-text body-1' style={{ color: "#1f26d2", fontWeight: "600" }}>
+								{details.detail12 || "Naven Khara massa nisi. Aliquam quis ante ultricies arcu tincidunt bibendum ac sed enim. Sed ultrices et arcu quis sollicitudin."}
+							</p>
 							<div className='stat-1 d-flex'>
 								<div className='verticle-line'></div>
-								<div className='content ms-3'>
-									<div className='years'>
+								<div className='content ms-3' style={{ color: "red" }}>
+									<div className='years body-1'>
 										Reach out to us to get your <br /> dream space
 									</div>
 									<div className='heading heading-3'>+91 {details.phoneNo || "9699700777"}</div>
@@ -73,12 +78,12 @@ const FeaturedProperties = (props) => {
 						</div>
 					</div>
 
-					<div className='featured_properties_right container mt-5 mt-sm-0' style={{ maxWidth: "500px" }}>
+					<div className='featured_properties_right container mt-5 mt-md-0' style={{ maxWidth: "500px" }}>
 						<Slider {...settings}>
 							{featuredPropertyData?.map((val, index) => {
 								return (
 									<div className='d-flex' style={{ border: "none" }} key={index} onClick={() => OnClickPropertyHandler(val.id)}>
-										<img className='card-img-top' src={val.mainImg} alt='property image cap' style={{ maxHeight: "17rem" }} />
+										<img className='card-img-top d-block w-100' src={val.mainImg} alt='property image cap' />
 									</div>
 								);
 							})}

@@ -16,21 +16,16 @@ const Associates = () => {
 	};
 	return (
 		<>
-			<div className='associate-main container-md my-5 px-4 d-sm-flex justify-content-around align-items-center'>
-				<div className='associate-left w-50 me-5'>
-					<div
-						style={{
-							backgroundColor: "#e5e5e5",
-							height: "12.5rem",
-							width: "12.5rem",
-							position: "relative",
-						}}></div>
+			<div className='associate-main container-md my-5 px-4 d-md-flex justify-content-around align-items-center'>
+				<div className='associate-left w-lg-50 me-5'>
+					<div className='box'></div>
 					<div
 						className='heading-2 me-sm-5'
 						style={{
 							position: "relative",
 							top: "-170px",
 							left: "50px",
+							color: "#fe2c33",
 						}}>
 						To make your Dreams come true we have associated with
 					</div>
@@ -120,7 +115,9 @@ const Associates = () => {
 						style={{
 							borderTop: "1px solid #c4c4c4",
 						}}>
-						<p className='heading-2 text-center align-middle'>And Many More...</p>
+						<p className='heading-2 text-center align-middle' style={{ color: "#fe2c33" }}>
+							And Many More...
+						</p>
 					</div>
 				</div>
 			</div>

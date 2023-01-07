@@ -22,6 +22,8 @@ const PropertyListingPage = () => {
 	const [loader, setLoader] = useState(false);
 	const navigate = useNavigate();
 	const [details, setDetails] = useState({});
+	const [alert, setAlert] = useState(false);
+	const [alertMsg, setAlertMsg] = useState();
 
 	useEffect(() => {
 		const setData = async () => {
@@ -39,8 +41,18 @@ const PropertyListingPage = () => {
 	useEffect(() => {
 		const getProperties = async () => {
 			setLoader(true);
-			const response = await propApi.get("/getProperties");
-			setPropertiesData(response.data.message);
+			try {
+				const response = await propApi.get("/getProperties");
+				setPropertiesData(response.data.message);
+				setAlert(false);
+			} catch (error) {
+				setPropertiesData([]);
+				setAlert(true);
+				setAlertMsg(error.response.data.message);
+				setTimeout(() => {
+					setAlert(false);
+				}, 4000);
+			}
 			setLoader(false);
 		};
 		getProperties();
@@ -49,8 +61,8 @@ const PropertyListingPage = () => {
 	const OnClickPropertyHandler = (propertyId) => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
-				console.log(user?.email);
-				console.log(user?.phoneNumber);
+				// console.log(user?.email);
+				// console.log(user?.phoneNumber);
 				navigate(`/property-details/${propertyId}/${details.phoneNo}`);
 			} else {
 				setShowModal(true);
@@ -60,9 +72,18 @@ const PropertyListingPage = () => {
 
 	const handleType = async (e, type) => {
 		setLoader(true);
-		const response = await propApi.get(`/getPropertiesByType?propertyActionType=${e.target.value}&type=${type}`);
-		// console.log("handleType", response);
-		setPropertiesData(response.data.message);
+		try {
+			const response = await propApi.get(`/getPropertiesByType?propertyActionType=${e.target.value}&type=${type}`);
+			setPropertiesData(response.data.message);
+			setAlert(false);
+		} catch (error) {
+			setPropertiesData([]);
+			setAlert(true);
+			setAlertMsg(error.response.data.message);
+			setTimeout(() => {
+				setAlert(false);
+			}, 4000);
+		}
 		setLoader(false);
 	};
 
@@ -71,15 +92,15 @@ const PropertyListingPage = () => {
 			<LandingPageHeader isdark={true} />
 			{loader && <Alert />}
 			{showModal && <LoginModal setState={setShowModal} />}
-			<div className='headings container mt-4'>
-				<p
-					className='heading-1'
-					// style={{ color: "#ff0000" }}
-				>
-					{details.detail13 || "Your Dream Property"}
-				</p>
+			{alert && (
+				<div className='alert alert-primary alert-dismissible fade show' role='alert'>
+					{alertMsg}
+				</div>
+			)}
+			<div className='headings container mt-4' style={{ color: "#ec3237" }}>
+				<p className='heading-1'>{details.detail13 || "You'r Dream Property"}</p>
 				<p className='body-1' style={{ fontWeight: "500" }}>
-					{details.detail14 || "Your not buying a home, your buying a lifestyle. To buy a nice home is to choose a better way of life."}
+					{details.detail14 || "You'r not buying a home, you'r buying a lifestyle. To buy a nice home is to choose a better way of life."}
 				</p>
 			</div>
 
@@ -114,6 +135,12 @@ const PropertyListingPage = () => {
 									<option className='dropdown-item' value='Rent'>
 										Rent Property
 									</option>
+									<option className='dropdown-item' value='BuyNew'>
+										Buy New Project
+									</option>
+									<option className='dropdown-item' value='RentNew'>
+										Rent New Project
+									</option>
 								</select>
 							</div>
 						</div>
@@ -141,30 +168,15 @@ const PropertyListingPage = () => {
 									<option className='dropdown-item' value='Rent'>
 										Rent Property
 									</option>
+									<option className='dropdown-item' value='BuyNew'>
+										Buy New Project
+									</option>
+									<option className='dropdown-item' value='RentNew'>
+										Rent New Project
+									</option>
 								</select>
 							</div>
 						</div>
-
-						{/* <label for="dog-names" className='mx-2'>Commercial</label>
-        <select className="form-select" aria-label="Default select example" onClick={handleCommercial}>
-          <option className="dropdown-item" selected>Commercial</option>
-          <option className="dropdown-item" value="All">All</option>
-          <option className="dropdown-item" value="Buy">Buy Property</option>
-          <option className="dropdown-item" value="Rent">Rent Property</option>
-        </select> */}
-
-						{/* <div className="commercial-dropdown ms-sm-5">
-            <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle body-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Commercial <br className='MobileResponsive'/> Properties
-            </button>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li className="dropdown-item">All</li>
-                  <li className="dropdown-item">Buy Property</li>
-                  <li className="dropdown-item">Rent Property</li>
-              </ul>
-            </div>
-          </div> */}
 					</div>
 				</div>
 			</div>
@@ -173,11 +185,12 @@ const PropertyListingPage = () => {
 				<div className='masonry'>
 					{propertiesData.map((val, index) => {
 						let desc = String(val.About).substring(0, String(val.About).indexOf("\n") > 0 ? String(val.About).indexOf("\n") : 70);
-						console.log(desc, "===>", val.title, "index ==>", String(val.About).indexOf("\n"));
+						// console.log(desc, "===>", val.title, "index ==>", String(val.About).indexOf("\n"));
 						return (
 							<div className='img-card mb-3' onClick={() => OnClickPropertyHandler(val.id)} key={index} style={{ minHeight: "10rem" }}>
 								<img src={val.mainImg} alt='propertyImg' />
 								<div className='overlay'>
+									<p className='heading-3 px-4 pt-3 mb-0'>{val.title}</p>
 									<p className='heading-3 px-4 pt-3 mb-0'> {val.carpetArea} sqft.</p>
 									<p className='property body-2  px-4' style={{ maxWidth: "10" }}>
 										{" "}

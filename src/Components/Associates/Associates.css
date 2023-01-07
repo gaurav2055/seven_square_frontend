@@ -9,8 +9,24 @@
 	text-align: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 991px) {
 	.associate-right {
 		margin-top: -120px;
+	}
+}
+
+.box {
+	background-color: #e5e5e5;
+	height: 12.5rem;
+	width: 12.5rem;
+	position: relative;
+}
+
+@media screen and (max-width: 991px) {
+	.box {
+		background-color: rgba(255, 255, 255, 0);
+		height: 12.5rem;
+		width: 12.5rem;
+		position: relative;
 	}
 }
