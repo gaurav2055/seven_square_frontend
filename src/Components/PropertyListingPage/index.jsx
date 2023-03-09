@@ -129,17 +129,14 @@ const PropertyListingPage = () => {
 									<option className='dropdown-item' value='All'>
 										All
 									</option>
+									<option className='dropdown-item' value='New Project'>
+										New Project
+									</option>
 									<option className='dropdown-item' value='Buy'>
 										Buy Property
 									</option>
 									<option className='dropdown-item' value='Rent'>
 										Rent Property
-									</option>
-									<option className='dropdown-item' value='BuyNew'>
-										Buy New Project
-									</option>
-									<option className='dropdown-item' value='RentNew'>
-										Rent New Project
 									</option>
 								</select>
 							</div>
@@ -162,17 +159,14 @@ const PropertyListingPage = () => {
 									<option className='dropdown-item' value='All'>
 										All
 									</option>
+									<option className='dropdown-item' value='New Project'>
+										New Project
+									</option>
 									<option className='dropdown-item' value='Buy'>
 										Buy Property
 									</option>
 									<option className='dropdown-item' value='Rent'>
 										Rent Property
-									</option>
-									<option className='dropdown-item' value='BuyNew'>
-										Buy New Project
-									</option>
-									<option className='dropdown-item' value='RentNew'>
-										Rent New Project
 									</option>
 								</select>
 							</div>

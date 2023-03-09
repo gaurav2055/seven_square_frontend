@@ -19,8 +19,7 @@ const Card = (props) => {
 					<span className='badge bg-primary mb-2 heading-3'>{props?.data?.propertyActionType || "Buy"}</span>
 				) : (
 					<>
-						<span className='badge bg-primary mb-2 heading-3'>{props?.data?.propertyActionType?.match(/[A-Z][a-z]+/g)[0] || "Buy"}</span>
-						<span className='badge bg-danger ms-2 mb-2 heading-3'>New</span>
+						<span className='badge bg-danger mb-2 heading-3'>{props?.data?.propertyActionType || "New Project"}</span>
 					</>
 				)}
 				<p className='heading-2'>{props?.data?.title || "Hill Crest,16th Road, Bandra West"}</p>

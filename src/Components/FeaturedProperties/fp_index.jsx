@@ -72,7 +72,10 @@ const FeaturedProperties = (props) => {
 									<div className='years body-1'>
 										Reach out to us to get your <br /> dream space
 									</div>
-									<div className='heading heading-3'>+91 {details.phoneNo || "9699700777"}</div>
+									<div className='heading heading-3'>
+										Naveen S Khara <br />
+										+91 {details.phoneNo || "9699700777"}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -81,9 +84,33 @@ const FeaturedProperties = (props) => {
 					<div className='featured_properties_right container mt-5 mt-md-0' style={{ maxWidth: "500px" }}>
 						<Slider {...settings}>
 							{featuredPropertyData?.map((val, index) => {
+								let desc = String(val.About).substring(0, String(val.About).indexOf("\n") > 0 ? String(val.About).indexOf("\n") : 70);
 								return (
-									<div className='d-flex' style={{ border: "none" }} key={index} onClick={() => OnClickPropertyHandler(val.id)}>
-										<img className='card-img-top d-block w-100' src={val.mainImg} alt='property image cap' />
+									// <>
+									// 	<div className='d-flex' style={{ border: "none" }} key={index} onClick={() => OnClickPropertyHandler(val.id)}>
+									// 		<img className='card-img-top d-block w-100' src={val.mainImg} alt='property image cap' />
+									// 	</div>
+									// 	<div className='overlay'>
+									// 		<p className='heading-3 px-4 pt-3 mb-0'>{val.title}</p>
+									// 		<p className='heading-3 px-4 pt-3 mb-0'> {val.carpetArea} sqft.</p>
+									// 		<p className='property body-2  px-4' style={{ maxWidth: "10" }}>
+									// 			{" "}
+									// 			{/* {String(val.About).substring(0, 200)}{" "} */}
+									// 			{desc}
+									// 		</p>
+									// 	</div>
+									// </>
+									<div className='img-card d-flex mb-3' onClick={() => OnClickPropertyHandler(val.id)} key={index}>
+										<img className='card-img-top d-block w-100' src={val.mainImg} alt='propertyImg' />
+										<div className='overlay'>
+											<p className='heading-3 px-4 pt-3 mb-0'>{val.title}</p>
+											<p className='heading-3 px-4 pt-3 mb-0'> {val.carpetArea} sqft.</p>
+											<p className='property body-2  px-4 w-75'>
+												{" "}
+												{/* {String(val.About).substring(0, 200)}{" "} */}
+												{desc}
+											</p>
+										</div>
 									</div>
 								);
 							})}

@@ -106,7 +106,7 @@ body {
 @media screen and (max-width: 600px) {
 	.body-1 {
 		font-family: BoldenVan, "Source Sans Pro", sans-serif;
-		font-size: 14px;
+		font-size: 18px;
 		font-weight: 400;
 	}
 	.body-2 {

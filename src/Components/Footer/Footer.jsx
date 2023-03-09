@@ -26,10 +26,14 @@ const Footer = () => {
 						<p>{details.brief}</p>
 					</div>
 					<div className='contact me-4'>
-						<p className='h4'>Contact</p>
+						<p className='h4'>
+							Contact <br /> Naveen S Khara
+						</p>
 						{/* <div className="phn-no d-flex justify-content-space align-items-center"> */}
 						<p>Phone No. &nbsp;</p>
-						<p style={{ marginTop: "-20px" }}>+91 {details.phoneNo || "9699700777"}</p>
+						<a href={`tel:${details.phoneNo || 9699700777}`} className='link-light' style={{ "text-decoration": "none" }}>
+							<p style={{ marginTop: "-20px" }}>+91 {details.phoneNo || "9699700777"}</p>
+						</a>
 						{/* </div> */}
 						{/* <div className="email"> */}
 						<p>Email</p>
