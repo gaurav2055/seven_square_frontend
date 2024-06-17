@@ -63,7 +63,7 @@ const PropertyListingPage = () => {
 			if (user) {
 				// console.log(user?.email);
 				// console.log(user?.phoneNumber);
-				navigate(`/property-details/${propertyId}/${details.phoneNo}`);
+				navigate(`/property-details/${propertyId}/${details?.phoneNo}`);
 			} else {
 				setShowModal(true);
 			}
@@ -98,9 +98,9 @@ const PropertyListingPage = () => {
 				</div>
 			)}
 			<div className='headings container mt-4' style={{ color: "#ec3237" }}>
-				<p className='heading-1'>{details.detail13 || "You'r Dream Property"}</p>
+				<p className='heading-1'>{details?.detail13 || "You'r Dream Property"}</p>
 				<p className='body-1' style={{ fontWeight: "500" }}>
-					{details.detail14 || "You'r not buying a home, you'r buying a lifestyle. To buy a nice home is to choose a better way of life."}
+					{details?.detail14 || "You'r not buying a home, you'r buying a lifestyle. To buy a nice home is to choose a better way of life."}
 				</p>
 			</div>
 

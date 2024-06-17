@@ -38,7 +38,7 @@ const FeaturedProperties = (props) => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
 				// console.log(user?.email);
-				navigate(`/property-details/${propertyId}/${details.phoneNo}`);
+				navigate(`/property-details/${propertyId}/${details?.phoneNo}`);
 			} else {
 				setShowModal(true);
 			}
@@ -58,13 +58,13 @@ const FeaturedProperties = (props) => {
 						<div className='card-body'>
 							<p className='card-title heading-2'>Feature Properties</p>
 							<p className='card-text body-1' style={{ color: "#1f26d2", fontWeight: "600" }}>
-								{details.detail11 || "We help you to get the perfect lifestyle!"}
+								{details?.detail11 || "We help you to get the perfect lifestyle!"}
 							</p>
 						</div>
 						<hr />
 						<div className='card-body'>
 							<p className='card-text body-1' style={{ color: "#1f26d2", fontWeight: "600" }}>
-								{details.detail12 || "Naven Khara massa nisi. Aliquam quis ante ultricies arcu tincidunt bibendum ac sed enim. Sed ultrices et arcu quis sollicitudin."}
+								{details?.detail12 || "Naven Khara massa nisi. Aliquam quis ante ultricies arcu tincidunt bibendum ac sed enim. Sed ultrices et arcu quis sollicitudin."}
 							</p>
 							<div className='stat-1 d-flex'>
 								<div className='verticle-line'></div>
@@ -74,7 +74,7 @@ const FeaturedProperties = (props) => {
 									</div>
 									<div className='heading heading-3'>
 										Naveen S Khara <br />
-										+91 {details.phoneNo || "9699700777"}
+										+91 {details?.phoneNo || "9699700777"}
 									</div>
 								</div>
 							</div>

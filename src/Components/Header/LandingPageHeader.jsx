@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import map from "../../assets/map.png";
 import phone from "../../assets/phone.png";
 import facebook from "../../assets/facebook.png";
+import instagram from "../../assets/Instagram_icon.png.webp"
 import { useState } from "react";
 import LoginModal from "../LoginModal/LoginModal";
 import { detailsApi } from "../../axios";
@@ -71,14 +72,19 @@ const LandingPageHeader = (props) => {
 								</Link>
 								<ul class='dropdown-menu'>
 									<li>
-										<a class='dropdown-item text-danger' href={`tel:${details.phoneNo || 9699700777}`}>
-											<img src={phone} alt='' className='me-2' style={{ width: "30px", height: "30px" }} />
-											{details.phoneNo || 9699700777}
+										<a class='dropdown-item text-danger' href={`tel:${details?.phoneNo || 9699700777}`}>
+											<img src={phone} alt='Phone' className='me-2' style={{ width: "30px", height: "30px" }} />
+											{details?.phoneNo || 9699700777}
 										</a>
 									</li>
 									<li>
-										<a href='https://www.facebook.com/7SQUAREREALTORS/' target='_blank' className='dropdown-item text-danger'>
-											<img src={facebook} alt='' className='me-2' style={{ width: "30px", height: "30px" }} /> Facebook
+										<a href='https://www.facebook.com/profile.php?id=61558366063022&mibextid=ZbWKwL' target='_blank' className='dropdown-item text-danger'>
+											<img src={facebook} alt='fb_logo' className='me-2' style={{ width: "30px", height: "30px" }} /> Facebook
+										</a>
+									</li>
+									<li>
+										<a href='https://www.instagram.com/7squarerealtors?igsh=MWhjZ2s0aGFoMTFzcA==' target='_blank' className='dropdown-item text-danger'>
+											<img src={instagram} alt='ig_logo' className='me-2' style={{ width: "30px", height: "30px" }} /> Instagram
 										</a>
 									</li>
 									<li>
